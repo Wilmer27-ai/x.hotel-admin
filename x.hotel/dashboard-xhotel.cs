@@ -10,10 +10,9 @@ using System.Windows.Forms;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
-
 namespace x.hotel
 {
-    public partial class Admin : Form
+    public partial class dashboard_xhotel : Form
     {
         IFirebaseConfig config = new FirebaseConfig
         {
@@ -21,7 +20,12 @@ namespace x.hotel
             BasePath = "https://x-hotel-451cb-default-rtdb.asia-southeast1.firebasedatabase.app",
         };
         IFirebaseClient client;
-        public Admin()
+        public dashboard_xhotel()
+        {
+            InitializeComponent();
+        }
+
+        private void dashboard_xhotel_Load(object sender, EventArgs e)
         {
 
         }
