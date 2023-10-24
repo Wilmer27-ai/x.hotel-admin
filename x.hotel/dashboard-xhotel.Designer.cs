@@ -90,7 +90,7 @@ namespace x.hotel
             this.button4.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(954, 137);
+            this.button4.Location = new System.Drawing.Point(954, 138);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(113, 31);
             this.button4.TabIndex = 3;
