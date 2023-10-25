@@ -30,5 +30,11 @@ namespace x.hotel
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SignUpForm newForm = new SignUpForm();
+            newForm.Show();
+        }
     }
 }
