@@ -62,7 +62,6 @@ namespace x.hotel
             this.button1.TabIndex = 0;
             this.button1.Text = "Calendar";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -83,7 +82,6 @@ namespace x.hotel
             this.button3.TabIndex = 2;
             this.button3.Text = "Dashboard";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -201,7 +199,7 @@ namespace x.hotel
             this.label9.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.label9.Location = new System.Drawing.Point(130, 229);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(88, 95);
+            this.label9.Size = new System.Drawing.Size(87, 95);
             this.label9.TabIndex = 12;
             this.label9.Text = "0";
             // 
@@ -213,7 +211,7 @@ namespace x.hotel
             this.label10.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.label10.Location = new System.Drawing.Point(323, 229);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(88, 95);
+            this.label10.Size = new System.Drawing.Size(87, 95);
             this.label10.TabIndex = 13;
             this.label10.Text = "0";
             // 
@@ -225,7 +223,7 @@ namespace x.hotel
             this.label11.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.label11.Location = new System.Drawing.Point(518, 229);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(88, 95);
+            this.label11.Size = new System.Drawing.Size(87, 95);
             this.label11.TabIndex = 14;
             this.label11.Text = "0";
             // 
@@ -237,7 +235,7 @@ namespace x.hotel
             this.label12.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.label12.Location = new System.Drawing.Point(712, 229);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(88, 95);
+            this.label12.Size = new System.Drawing.Size(87, 95);
             this.label12.TabIndex = 15;
             this.label12.Text = "0";
             // 
@@ -249,7 +247,7 @@ namespace x.hotel
             this.label13.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.label13.Location = new System.Drawing.Point(846, 229);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(88, 95);
+            this.label13.Size = new System.Drawing.Size(87, 95);
             this.label13.TabIndex = 16;
             this.label13.Text = "0";
             // 
@@ -261,7 +259,7 @@ namespace x.hotel
             this.label14.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.label14.Location = new System.Drawing.Point(979, 229);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(88, 95);
+            this.label14.Size = new System.Drawing.Size(87, 95);
             this.label14.TabIndex = 17;
             this.label14.Text = "0";
             // 
@@ -293,7 +291,6 @@ namespace x.hotel
             this.DoubleBuffered = true;
             this.Name = "dashboard_xhotel";
             this.Text = "dashboard_xhotel";
-            this.Load += new System.EventHandler(this.dashboard_xhotel_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -15,26 +15,72 @@ namespace x.hotel
 {
     public partial class Admin : Form
     {
-        IFirebaseConfig config = new FirebaseConfig
+        private readonly IFirebaseConfig firebaseConfig = new FirebaseConfig
         {
-            AuthSecret = "x0WQCfAAdZVlyYXDbbIh9W5fG51aNI8uNj6zYmMn",
-            BasePath = "https://x-hotel-451cb-default-rtdb.asia-southeast1.firebasedatabase.app",
+            AuthSecret = "XX9AMWcYQ0S2FKOGWT0DWAzKwehEhkYew84T91lg",
+            BasePath = "https://crud-daaa1-default-rtdb.firebaseio.com"
         };
-        IFirebaseClient client;
+
+        private IFirebaseClient firebaseClient;
+
         public Admin()
         {
+            InitializeComponent();
+            firebaseClient = new FireSharp.FirebaseClient(firebaseConfig);
 
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
+            if (firebaseClient == null)
+            {
+                MessageBox.Show("Failed to initialize Firebase client.");
+                // Handle the situation where Firebase initialization fails.
+                // You might want to disable some functionality or exit the application.
+                // For now, you can return or throw an exception to stop further execution.
+                return;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             SignUpForm newForm = new SignUpForm();
             newForm.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SignIn();
+        }
+
+        private async void SignIn()
+        {
+            try
+            {
+                string username = textBox1.Text;
+                string password = textBox2.Text;
+
+                if (firebaseClient == null)
+                {
+                    MessageBox.Show("Firebase client is not initialized.");
+                    return;
+                }
+
+                FirebaseResponse response = await Task.Run(() => firebaseClient.Get($"Admin/{username}"));
+                var user = response.ResultAs<AdminInfo>();
+
+                if (user != null && user.Password == password)
+                {
+                    MessageBox.Show("Login successful!");
+                    SignUpForm newForm = new SignUpForm();
+                    newForm.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Login failed. Please check your credentials.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}\n\n{ex.StackTrace}");
+            }
         }
     }
 }

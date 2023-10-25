@@ -14,35 +14,10 @@ namespace x.hotel
 {
     public partial class dashboard_xhotel : Form
     {
-        IFirebaseConfig config = new FirebaseConfig
-        {
-            AuthSecret = "x0WQCfAAdZVlyYXDbbIh9W5fG51aNI8uNj6zYmMn",
-            BasePath = "https://x-hotel-451cb-default-rtdb.asia-southeast1.firebasedatabase.app",
-        };
-        IFirebaseClient client;
+   
         public dashboard_xhotel()
         {
             InitializeComponent();
-        }
-
-        private void dashboard_xhotel_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

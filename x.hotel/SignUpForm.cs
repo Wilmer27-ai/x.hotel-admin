@@ -15,35 +15,36 @@ namespace x.hotel
 {
     public partial class SignUpForm : Form
     {
-        IFirebaseConfig Config = new FirebaseConfig
+        private readonly IFirebaseConfig config = new FirebaseConfig
         {
-            AuthSecret = "x0WQCfAAdZVlyYXDbbIh9W5fG51aNI8uNj6zYmMn",
-            BasePath = "https://x-hotel-451cb-default-rtdb.asia-southeast1.firebasedatabase.app"
+            AuthSecret = "XX9AMWcYQ0S2FKOGWT0DWAzKwehEhkYew84T91lg",
+            BasePath = "https://crud-daaa1-default-rtdb.firebaseio.com"
         };
 
-        IFirebaseClient Client;
+        private IFirebaseClient firebaseClient;
+
         public SignUpForm()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-             SignUp();
-        }
-
         private void SignUpForm_Load(object sender, EventArgs e)
         {
-            Client = new FireSharp.FirebaseClient(Config);
+            firebaseClient = new FireSharp.FirebaseClient(config);
         }
 
-        private async void SignUp()
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            await SignUp();
+        }
+
+        private async Task SignUp()
         {
             string adminId = textBox1.Text;
             string username = textBox2.Text;
             string password = textBox3.Text;
 
-            var Admin = new AdminInfo
+            var admin = new AdminInfo
             {
                 AdminId = adminId,
                 Username = username,
@@ -52,7 +53,7 @@ namespace x.hotel
 
             try
             {
-                FirebaseResponse response = await Client.SetAsync("Admins/" + adminId, Admin);
+                FirebaseResponse response = await Task.Run(() => firebaseClient.Set($"Admins/{adminId}", admin));
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     MessageBox.Show("Signup successful!");
@@ -66,9 +67,6 @@ namespace x.hotel
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
-
-
-
         }
     }
 }
