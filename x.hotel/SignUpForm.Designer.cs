@@ -94,12 +94,13 @@ namespace x.hotel
             this.button1.TabIndex = 6;
             this.button1.Text = "Save";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // SignUpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(734, 450);
+            this.ClientSize = new System.Drawing.Size(690, 380);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
@@ -109,6 +110,7 @@ namespace x.hotel
             this.Controls.Add(this.label1);
             this.Name = "SignUpForm";
             this.Text = "SignUpForm";
+            this.Load += new System.EventHandler(this.SignUpForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
