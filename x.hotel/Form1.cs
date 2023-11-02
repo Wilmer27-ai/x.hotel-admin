@@ -53,8 +53,8 @@ namespace x.hotel
         {
             try
             {
-                string username = textBox1.Text;
-                string password = textBox2.Text;
+                string Username = textBox1.Text;
+                string Password = textBox2.Text;
 
                 if (firebaseClient == null)
                 {
@@ -62,13 +62,17 @@ namespace x.hotel
                     return;
                 }
 
-                FirebaseResponse response = await Task.Run(() => firebaseClient.Get($"Admin/{username}"));
-                var user = response.ResultAs<AdminInfo>();
+                FirebaseResponse response = await Task.Run(() => firebaseClient.Get($"Admin/{Username}/Password"));
+                string storedPassword = response.ResultAs<string>();
 
-                if (user != null && user.Password == password)
+                // Debugging statements
+                Console.WriteLine($"Entered Password: {Password}");
+                Console.WriteLine($"Stored Password: {storedPassword}");
+
+                if (storedPassword != null && storedPassword == Password)
                 {
                     MessageBox.Show("Login successful!");
-                    SignUpForm newForm = new SignUpForm();
+                    dashboard_xhotel newForm = new dashboard_xhotel();
                     newForm.Show();
                     this.Hide();
                 }
