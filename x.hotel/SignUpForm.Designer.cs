@@ -35,7 +35,7 @@ namespace x.hotel
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -86,22 +86,22 @@ namespace x.hotel
             this.textBox3.Size = new System.Drawing.Size(249, 22);
             this.textBox3.TabIndex = 5;
             // 
-            // button1
+            // button_1
             // 
-            this.button1.Location = new System.Drawing.Point(311, 240);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 28);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button_1.Location = new System.Drawing.Point(311, 240);
+            this.button_1.Name = "button_1";
+            this.button_1.Size = new System.Drawing.Size(75, 28);
+            this.button_1.TabIndex = 6;
+            this.button_1.Text = "Save";
+            this.button_1.UseVisualStyleBackColor = true;
+            this.button_1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // SignUpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(690, 380);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_1);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -124,6 +124,6 @@ namespace x.hotel
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_1;
     }
 }

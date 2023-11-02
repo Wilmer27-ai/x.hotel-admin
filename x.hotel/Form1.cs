@@ -15,13 +15,13 @@ namespace x.hotel
 {
     public partial class Admin : Form
     {
-        private readonly IFirebaseConfig firebaseConfig = new FirebaseConfig
+        public IFirebaseConfig firebaseConfig = new FirebaseConfig
         {
             AuthSecret = "XX9AMWcYQ0S2FKOGWT0DWAzKwehEhkYew84T91lg",
             BasePath = "https://crud-daaa1-default-rtdb.firebaseio.com"
         };
 
-        private IFirebaseClient firebaseClient;
+        public IFirebaseClient firebaseClient;
 
         public Admin()
         {
@@ -32,19 +32,18 @@ namespace x.hotel
             {
                 MessageBox.Show("Failed to initialize Firebase client.");
                 // Handle the situation where Firebase initialization fails.
-                // You might want to disable some functionality or exit the application.
                 // For now, you can return or throw an exception to stop further execution.
                 return;
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             SignUpForm newForm = new SignUpForm();
             newForm.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
             SignIn();
         }
@@ -53,8 +52,8 @@ namespace x.hotel
         {
             try
             {
-                string Username = textBox1.Text;
-                string Password = textBox2.Text;
+                var Username = textBox1.Text;
+                var Password = textBox2.Text;
 
                 if (firebaseClient == null)
                 {
@@ -62,16 +61,21 @@ namespace x.hotel
                     return;
                 }
 
-                FirebaseResponse response = await Task.Run(() => firebaseClient.Get($"Admin/{Username}/Password"));
-                string storedPassword = response.ResultAs<string>();
+                FirebaseResponse response = await Task.Run(() => firebaseClient.Get($"Admins/{Username}"));
+                var User = response.ResultAs<AdminInfo>();
 
                 // Debugging statements
+                Console.WriteLine($"Entered Username: {Username}");
                 Console.WriteLine($"Entered Password: {Password}");
-                Console.WriteLine($"Stored Password: {storedPassword}");
+                Console.WriteLine($"Stored Password: {User?.Password}");
 
-                if (storedPassword != null && storedPassword == Password)
+                if (User != null && User.Password != null && User.Password.Trim() == Password.Trim())
                 {
                     MessageBox.Show("Login successful!");
+
+                    // Debugging statement
+                    Console.WriteLine("Login successful!");
+
                     dashboard_xhotel newForm = new dashboard_xhotel();
                     newForm.Show();
                     this.Hide();
@@ -79,10 +83,14 @@ namespace x.hotel
                 else
                 {
                     MessageBox.Show("Login failed. Please check your credentials.");
+
+                    // Debugging statement
+                    Console.WriteLine("Login failed. Password mismatch or user not found.");
                 }
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"Exception: {ex}");
                 MessageBox.Show($"An error occurred: {ex.Message}\n\n{ex.StackTrace}");
             }
         }

@@ -31,18 +31,26 @@ namespace x.hotel
         private void SignUpForm_Load(object sender, EventArgs e)
         {
             firebaseClient = new FireSharp.FirebaseClient(config);
+
+            if (firebaseClient == null)
+            {
+                MessageBox.Show("Failed to initialize Firebase client.");
+                // Handle the situation where Firebase initialization fails.
+                // For now, you can return or throw an exception to stop further execution.
+                return;
+            }
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        private async void Button1_Click(object sender, EventArgs e)
         {
             await SignUp();
         }
 
         private async Task SignUp()
         {
-            string adminId = textBox1.Text;
-            string username = textBox2.Text;
-            string password = textBox3.Text;
+            var adminId = textBox1.Text;
+            var username = textBox2.Text;
+            var password = textBox3.Text;
 
             var admin = new AdminInfo
             {
@@ -57,6 +65,9 @@ namespace x.hotel
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     MessageBox.Show("Signup successful!");
+
+                    // Add this line for debugging
+                    Console.WriteLine($"Signup successful. AdminId: {adminId}, Username: {username}, Password: {password}");
                 }
                 else
                 {
@@ -66,7 +77,15 @@ namespace x.hotel
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
+
+                // Add this line for debugging
+                Console.WriteLine($"Error during signup: {ex}");
             }
         }
     }
 }
+
+
+
+
+
