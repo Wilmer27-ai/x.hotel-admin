@@ -33,8 +33,8 @@ namespace x.hotel
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.username1 = new System.Windows.Forms.TextBox();
+            this.password2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -66,19 +66,19 @@ namespace x.hotel
             this.label3.TabIndex = 2;
             this.label3.Text = "X-HOTEL";
             // 
-            // textBox1
+            // username1
             // 
-            this.textBox1.Location = new System.Drawing.Point(269, 147);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(257, 22);
-            this.textBox1.TabIndex = 3;
+            this.username1.Location = new System.Drawing.Point(269, 147);
+            this.username1.Name = "username1";
+            this.username1.Size = new System.Drawing.Size(257, 22);
+            this.username1.TabIndex = 3;
             // 
-            // textBox2
+            // password2
             // 
-            this.textBox2.Location = new System.Drawing.Point(270, 212);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(256, 22);
-            this.textBox2.TabIndex = 4;
+            this.password2.Location = new System.Drawing.Point(270, 212);
+            this.password2.Name = "password2";
+            this.password2.Size = new System.Drawing.Size(256, 22);
+            this.password2.TabIndex = 4;
             // 
             // button1
             // 
@@ -108,8 +108,8 @@ namespace x.hotel
             this.ClientSize = new System.Drawing.Size(774, 417);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.password2);
+            this.Controls.Add(this.username1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -125,8 +125,8 @@ namespace x.hotel
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox username1;
+        private System.Windows.Forms.TextBox password2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
     }

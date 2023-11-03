@@ -31,8 +31,6 @@ namespace x.hotel
             if (firebaseClient == null)
             {
                 MessageBox.Show("Failed to initialize Firebase client.");
-                // Handle the situation where Firebase initialization fails.
-                // For now, you can return or throw an exception to stop further execution.
                 return;
             }
         }
@@ -52,8 +50,8 @@ namespace x.hotel
         {
             try
             {
-                var Username = textBox1.Text;
-                var Password = textBox2.Text;
+                var username = username1.Text;
+                var password = password2.Text;
 
                 if (firebaseClient == null)
                 {
@@ -61,20 +59,29 @@ namespace x.hotel
                     return;
                 }
 
-                FirebaseResponse response = await Task.Run(() => firebaseClient.Get($"Admins/{Username}"));
-                var User = response.ResultAs<AdminInfo>();
+                FirebaseResponse response = await Task.Run(() => firebaseClient.Get($"Admins/{username}"));
+
+                Console.WriteLine($"Username: {username}");
+                Console.WriteLine($"Response Body: {response.Body}");
+
+                if (response.Body == "null")
+                {
+                    MessageBox.Show("Admin not found.");
+                    return;
+                }
+
+                AdminInfo admin = response.ResultAs<AdminInfo>();
 
                 // Debugging statements
-                Console.WriteLine($"Entered Username: {Username}");
-                Console.WriteLine($"Entered Password: {Password}");
-                Console.WriteLine($"Stored Password: {User?.Password}");
+                Console.WriteLine($"Entered Password: {password}");
+                Console.WriteLine($"Stored Password: {admin?.Password}");
 
-                if (User != null && User.Password != null && User.Password.Trim() == Password.Trim())
+                if (admin != null && admin.Password != null && admin.Password.Trim() == password.Trim())
                 {
-                    MessageBox.Show("Login successful!");
+                    MessageBox.Show("Admin login successful!");
 
                     // Debugging statement
-                    Console.WriteLine("Login successful!");
+                    Console.WriteLine("Admin login successful!");
 
                     dashboard_xhotel newForm = new dashboard_xhotel();
                     newForm.Show();
@@ -82,10 +89,10 @@ namespace x.hotel
                 }
                 else
                 {
-                    MessageBox.Show("Login failed. Please check your credentials.");
+                    MessageBox.Show("Admin login failed. Password mismatch or admin not found.");
 
                     // Debugging statement
-                    Console.WriteLine("Login failed. Password mismatch or user not found.");
+                    Console.WriteLine("Admin login failed. Password mismatch or admin not found.");
                 }
             }
             catch (Exception ex)
@@ -96,3 +103,6 @@ namespace x.hotel
         }
     }
 }
+
+
+
