@@ -1,7 +1,7 @@
 ﻿
 namespace x.hotel
 {
-    partial class Admin
+    partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace x.hotel
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -77,6 +77,7 @@ namespace x.hotel
             // 
             this.password2.Location = new System.Drawing.Point(270, 212);
             this.password2.Name = "password2";
+            this.password2.PasswordChar = '*';
             this.password2.Size = new System.Drawing.Size(256, 22);
             this.password2.TabIndex = 4;
             // 
@@ -88,7 +89,7 @@ namespace x.hotel
             this.button1.TabIndex = 5;
             this.button1.Text = "Login";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_ClickAsync);
             // 
             // button2
             // 
@@ -100,7 +101,7 @@ namespace x.hotel
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
-            // Admin
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -113,8 +114,9 @@ namespace x.hotel
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Admin";
+            this.Name = "LoginForm";
             this.Text = "Admin Log in";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

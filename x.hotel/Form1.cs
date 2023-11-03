@@ -13,19 +13,23 @@ using FireSharp.Response;
 
 namespace x.hotel
 {
-    public partial class Admin : Form
+    public partial class LoginForm : Form
     {
         public IFirebaseConfig firebaseConfig = new FirebaseConfig
         {
-            AuthSecret = "XX9AMWcYQ0S2FKOGWT0DWAzKwehEhkYew84T91lg",
-            BasePath = "https://crud-daaa1-default-rtdb.firebaseio.com"
+            AuthSecret = "x0WQCfAAdZVlyYXDbbIh9W5fG51aNI8uNj6zYmMn",
+            BasePath = "https://x-hotel-451cb-default-rtdb.asia-southeast1.firebasedatabase.app"
         };
 
         public IFirebaseClient firebaseClient;
 
-        public Admin()
+        public LoginForm()
         {
             InitializeComponent();
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
             firebaseClient = new FireSharp.FirebaseClient(firebaseConfig);
 
             if (firebaseClient == null)
@@ -41,68 +45,49 @@ namespace x.hotel
             newForm.Show();
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private async void Button1_ClickAsync(object sender, EventArgs e)
+
         {
-            SignIn();
+            await Login();
         }
 
-        private async void SignIn()
+        private async Task Login()
         {
+            var username = username1.Text;
+            var password = password2.Text;
+
             try
             {
-                var username = username1.Text;
-                var password = password2.Text;
-
-                if (firebaseClient == null)
-                {
-                    MessageBox.Show("Firebase client is not initialized.");
-                    return;
-                }
-
                 FirebaseResponse response = await Task.Run(() => firebaseClient.Get($"Admins/{username}"));
 
-                Console.WriteLine($"Username: {username}");
-                Console.WriteLine($"Response Body: {response.Body}");
-
-                if (response.Body == "null")
+                if (response.Body != "null")
                 {
-                    MessageBox.Show("Admin not found.");
-                    return;
-                }
+                    AdminInfo admin = response.ResultAs<AdminInfo>();
 
-                AdminInfo admin = response.ResultAs<AdminInfo>();
-
-                // Debugging statements
-                Console.WriteLine($"Entered Password: {password}");
-                Console.WriteLine($"Stored Password: {admin?.Password}");
-
-                if (admin != null && admin.Password != null && admin.Password.Trim() == password.Trim())
-                {
-                    MessageBox.Show("Admin login successful!");
-
-                    // Debugging statement
-                    Console.WriteLine("Admin login successful!");
-
-                    dashboard_xhotel newForm = new dashboard_xhotel();
-                    newForm.Show();
-                    this.Hide();
+                    if (admin.Password == password)
+                    {
+                        MessageBox.Show("Login successful!");
+                        // Open the new form or perform any other action upon successful login
+                        // For example, you can open a new form like this:
+                        dashboard_xhotel newForm = new dashboard_xhotel();
+                        // Show the new form
+                        newForm.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid password. Please try again.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Admin login failed. Password mismatch or admin not found.");
-
-                    // Debugging statement
-                    Console.WriteLine("Admin login failed. Password mismatch or admin not found.");
+                    MessageBox.Show("User not found. Please check your credentials.");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Exception: {ex}");
-                MessageBox.Show($"An error occurred: {ex.Message}\n\n{ex.StackTrace}");
+                MessageBox.Show($"An error occurred: {ex.Message}");
+                Console.WriteLine($"Error during login: {ex}");
             }
         }
     }
 }
-
-
-

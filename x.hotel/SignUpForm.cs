@@ -17,8 +17,8 @@ namespace x.hotel
     {
         private readonly IFirebaseConfig config = new FirebaseConfig
         {
-            AuthSecret = "XX9AMWcYQ0S2FKOGWT0DWAzKwehEhkYew84T91lg",
-            BasePath = "https://crud-daaa1-default-rtdb.firebaseio.com"
+            AuthSecret = "x0WQCfAAdZVlyYXDbbIh9W5fG51aNI8uNj6zYmMn",
+            BasePath = "https://x-hotel-451cb-default-rtdb.asia-southeast1.firebasedatabase.app"
         };
 
         private IFirebaseClient firebaseClient;
@@ -56,12 +56,12 @@ namespace x.hotel
             {
                 AdminId = adminId,
                 Username = username,
-                Password = password
+                Password = password,
             };
 
             try
             {
-                FirebaseResponse response = await Task.Run(() => firebaseClient.Set($"Admins/{adminId}", admin));
+                FirebaseResponse response = await Task.Run(() => firebaseClient.Set($"Admins/{username}", admin));
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     MessageBox.Show("Signup successful!");
