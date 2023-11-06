@@ -104,6 +104,12 @@
     <Compile Include="Calendar.Designer.cs">
       <DependentUpon>Calendar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Confirm Payment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Confirm Payment.Designer.cs">
+      <DependentUpon>Confirm Payment.cs</DependentUpon>
+    </Compile>
     <Compile Include="dashboard-xhotel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Calendar.resx">
       <DependentUpon>Calendar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Confirm Payment.resx">
+      <DependentUpon>Confirm Payment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dashboard-xhotel.resx">
       <DependentUpon>dashboard-xhotel.cs</DependentUpon>
