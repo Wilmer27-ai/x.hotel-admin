@@ -85,6 +85,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Addguest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Addguest.Designer.cs">
+      <DependentUpon>Addguest.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminInfo.cs" />
     <Compile Include="Calendar.cs">
       <SubType>Form</SubType>
@@ -118,6 +124,9 @@
     <Compile Include="SignUpForm.Designer.cs">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Addguest.resx">
+      <DependentUpon>Addguest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Calendar.resx">
       <DependentUpon>Calendar.cs</DependentUpon>
     </EmbeddedResource>
