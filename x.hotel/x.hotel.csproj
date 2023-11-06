@@ -92,6 +92,12 @@
       <DependentUpon>Addguest.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminInfo.cs" />
+    <Compile Include="Book Details.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Book Details.Designer.cs">
+      <DependentUpon>Book Details.cs</DependentUpon>
+    </Compile>
     <Compile Include="Calendar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     </Compile>
     <EmbeddedResource Include="Addguest.resx">
       <DependentUpon>Addguest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Book Details.resx">
+      <DependentUpon>Book Details.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Calendar.resx">
       <DependentUpon>Calendar.cs</DependentUpon>
