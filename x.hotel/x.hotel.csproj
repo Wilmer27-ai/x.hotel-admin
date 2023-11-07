@@ -91,6 +91,12 @@
     <Compile Include="Addguest.Designer.cs">
       <DependentUpon>Addguest.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddRoom.Designer.cs">
+      <DependentUpon>AddRoom.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminInfo.cs" />
     <Compile Include="Book Details.cs">
       <SubType>Form</SubType>
@@ -149,8 +155,17 @@
     <Compile Include="SignUpForm.Designer.cs">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateRoom.Designer.cs">
+      <DependentUpon>UpdateRoom.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Addguest.resx">
       <DependentUpon>Addguest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddRoom.resx">
+      <DependentUpon>AddRoom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Book Details.resx">
       <DependentUpon>Book Details.cs</DependentUpon>
@@ -187,6 +202,9 @@
     </Compile>
     <EmbeddedResource Include="SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateRoom.resx">
+      <DependentUpon>UpdateRoom.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
