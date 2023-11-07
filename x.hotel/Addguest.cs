@@ -99,6 +99,7 @@ namespace x.hotel
                     roomCapacity = Convert.ToInt32(selectedRow.Cells["roomCapacity"].Value),
                     bedCount = Convert.ToInt32(selectedRow.Cells["bedCount"].Value),
                     roomDailyRate = Convert.ToInt32(selectedRow.Cells["roomDailyRate"].Value),
+
                     // Add other properties as needed
                 };
 

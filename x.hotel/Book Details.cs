@@ -47,6 +47,7 @@ namespace x.hotel
             Rooms2.Columns.Add("roomCapacity", "Room Capacity");
             Rooms2.Columns.Add("bedCount", "Room Bed");
             Rooms2.Columns.Add("roomDailyRate", "Room Rate");
+            Rooms2.Columns.Add("roomDailyRate", "Subtotal");
 
             // Populate the Rooms2 DataGridView with the selected room data
             Rooms2.Rows.Add(
@@ -55,6 +56,7 @@ namespace x.hotel
                 selectedRoom.roomNumber,
                 selectedRoom.roomCapacity,
                 selectedRoom.bedCount,
+                selectedRoom.roomDailyRate,
                 selectedRoom.roomDailyRate
             );
 
