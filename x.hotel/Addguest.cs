@@ -33,6 +33,7 @@ namespace x.hotel
             Client = new FireSharp.FirebaseClient(Config);
 
             Rooms1.AutoGenerateColumns = false;
+            Rooms1.Columns.Add("roomName", "Room Name");
             Rooms1.Columns.Add("roomClassification", "Room Type");
             Rooms1.Columns.Add("roomNumber", "Room No.");
             Rooms1.Columns.Add("roomCapacity", "Room Capacity");
@@ -69,6 +70,7 @@ namespace x.hotel
             foreach (var room in rooms)
             {
                 Rooms1.Rows.Add(
+                    room.Value.roomName,
                     room.Value.roomClassification,
                     room.Value.roomNumber,
                     room.Value.roomCapacity,
@@ -82,6 +84,58 @@ namespace x.hotel
         private void Rooms1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // Handle cell click event if needed
+            // Check if a valid cell is clicked (not header or empty row)
+            if (e.RowIndex >= 0 && e.RowIndex < Rooms1.Rows.Count && e.ColumnIndex >= 0)
+            {
+                // Get the selected row
+                DataGridViewRow selectedRow = Rooms1.Rows[e.RowIndex];
+
+                // Create a Room object from the selected row's data
+                Room selectedRoom = new Room
+                {
+                    roomName = Convert.ToString(selectedRow.Cells["roomName"].Value),
+                    roomClassification = Convert.ToString(selectedRow.Cells["roomClassification"].Value),
+                    roomNumber = Convert.ToInt32(selectedRow.Cells["roomNumber"].Value),
+                    roomCapacity = Convert.ToInt32(selectedRow.Cells["roomCapacity"].Value),
+                    bedCount = Convert.ToInt32(selectedRow.Cells["bedCount"].Value),
+                    roomDailyRate = Convert.ToInt32(selectedRow.Cells["roomDailyRate"].Value),
+                    // Add other properties as needed
+                };
+
+                // Pass the selected room data to the NextForm
+                Book_Details nextForm = new Book_Details(selectedRoom);
+                nextForm.Show();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Check if a row is selected in the Rooms1 DataGridView
+            if (Rooms1.SelectedRows.Count > 0)
+            {
+                // Get the selected row index
+                int selectedIndex = Rooms1.SelectedRows[0].Index;
+
+                // Create a Room object from the selected row's data
+                Room selectedRoom = new Room
+                {
+                    roomName = Convert.ToString(Rooms1.Rows[selectedIndex].Cells["roomName"].Value),
+                    roomClassification = Convert.ToString(Rooms1.Rows[selectedIndex].Cells["roomClassification"].Value),
+                    roomNumber = Convert.ToInt32(Rooms1.Rows[selectedIndex].Cells["roomNumber"].Value),
+                    roomCapacity = Convert.ToInt32(Rooms1.Rows[selectedIndex].Cells["roomCapacity"].Value),
+                    bedCount = Convert.ToInt32(Rooms1.Rows[selectedIndex].Cells["bedCount"].Value),
+                    roomDailyRate = Convert.ToInt32(Rooms1.Rows[selectedIndex].Cells["roomDailyRate"].Value),
+                    // Add other properties as needed
+                };
+
+                // Pass the selected room data to the Book_Details form
+                Book_Details bookDetailsForm = new Book_Details(selectedRoom);
+                bookDetailsForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please select a room for booking");
+            }
         }
     }
-}
+    }

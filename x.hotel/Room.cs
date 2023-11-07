@@ -19,6 +19,7 @@ namespace x.hotel
         public string roomName { get; set; }
         public int roomNumber { get; set; }
         public int? roomHourlyRate { get; set; }
+        
     }
 
     public class OccupancyDetails
@@ -42,5 +43,6 @@ namespace x.hotel
         public string img1 { get; set; }
         public string img2 { get; set; }
         public string img3 { get; set; }
+        public string roomName { get; set; }
     }
 }
