@@ -51,9 +51,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(441, 38);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(230, 29);
+            this.label1.Size = new System.Drawing.Size(245, 29);
             this.label1.TabIndex = 0;
-            this.label1.Text = "LIST OF GUESTS";
+            this.label1.Text = "MANAGE GUESTS";
             // 
             // label2
             // 

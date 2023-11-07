@@ -128,6 +128,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GuestListFInal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GuestListFInal.Designer.cs">
+      <DependentUpon>GuestListFInal.cs</DependentUpon>
+    </Compile>
     <Compile Include="List of Guests.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GuestListFInal.resx">
+      <DependentUpon>GuestListFInal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="List of Guests.resx">
       <DependentUpon>List of Guests.cs</DependentUpon>
