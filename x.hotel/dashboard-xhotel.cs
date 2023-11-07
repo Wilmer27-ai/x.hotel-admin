@@ -19,5 +19,12 @@ namespace x.hotel
         {
             InitializeComponent();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Addguest newForm = new Addguest();
+            // Show the new form
+            newForm.Show();
+        }
     }
 }
