@@ -94,5 +94,37 @@ namespace x.hotel
             // Show a message or perform further actions
             MessageBox.Show("Payment confirmed!");
         }
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Allow only numeric input for amount paid
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            // Recalculate and update the change when the amount paid changes
+            UpdateChange();
+        }
+
+        private void UpdateChange()
+        {
+            // Get the amount paid and total amount
+            if (int.TryParse(textBox3.Text, out int amountPaid) && int.TryParse(textBox2.Text, out int totalAmount))
+            {
+                // Calculate the change
+                int change = amountPaid - totalAmount;
+
+                // Display the change in TextBox4
+                textBox4.Text = change.ToString();
+            }
+            else
+            {
+                // Handle invalid input or display an error message
+                textBox4.Text = "Invalid input";
+            }
+        }
     }
 }

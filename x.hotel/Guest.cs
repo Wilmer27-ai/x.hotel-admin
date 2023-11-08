@@ -14,5 +14,6 @@ namespace x.hotel
         public int Age { get; set; }
         public string ContactNumber { get; set; }
         public string Address { get; set; }
+        public string Sex { get; set; }
     }
 }

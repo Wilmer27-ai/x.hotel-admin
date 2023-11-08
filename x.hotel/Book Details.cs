@@ -79,7 +79,7 @@ namespace x.hotel
 
             string contactNumber = textBox5.Text;
             string address = textBox6.Text;
-
+            string sex = checkBox1.Checked ? "Male" : (checkBox2.Checked ? "Female" : "");
             // Create a Guest object
             Guest guest = new Guest
             {
@@ -88,7 +88,8 @@ namespace x.hotel
                 LastName = lastName,
                 Age = age,
                 ContactNumber = contactNumber,
-                Address = address
+                Address = address,
+                Sex = sex
             };
 
             // Save the guest data to Firebase
