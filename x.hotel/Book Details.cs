@@ -16,16 +16,23 @@ namespace x.hotel
     public partial class Book_Details : Form
     {
         private Room selectedRoom;
-        private int TotalAmount;
+        private OccupancyDetails occupancyDetails;
         private IFirebaseConfig Config;
         private IFirebaseClient Client;
 
-        public Book_Details(Room selectedRoom)
+        // Constructor with two arguments
+        public Book_Details(Room selectedRoom, OccupancyDetails occupancyDetails)
         {
             InitializeComponent();
             this.selectedRoom = selectedRoom;
+            this.occupancyDetails = occupancyDetails;
             InitializeFirebase();
             PopulateNextFormRooms();
+        }
+
+        public Book_Details(Room selectedRoom)
+        {
+            this.selectedRoom = selectedRoom;
         }
 
         private void InitializeFirebase()

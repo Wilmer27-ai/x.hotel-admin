@@ -40,6 +40,8 @@ namespace x.hotel
             Rooms1.Columns.Add("bedCount", "Room Bed");
             Rooms1.Columns.Add("roomDailyRate", "Room Rate");
             Rooms1.Columns.Add("roomDailyRate", "SubTotal");
+            Rooms1.Columns.Add("startDate", "Start Date");
+            Rooms1.Columns.Add("endDate", "End Date");
 
             // Load data into DataGridView when the form is loaded
             Rooms1.CellClick += Rooms1_CellClick;
@@ -76,7 +78,9 @@ namespace x.hotel
                     room.Value.roomCapacity,
                     room.Value.bedCount,
                     room.Value.roomDailyRate,
-                    room.Value.roomDailyRate
+                    room.Value.roomDailyRate,
+                    string.Empty, // Start Date column (empty for now)
+                    string.Empty  // End Date column (empty for now)
                 );
             }
         }
@@ -102,7 +106,9 @@ namespace x.hotel
 
                     // Add other properties as needed
                 };
-
+                // Pass the selected room data to the Book_Details form
+                Book_Details bookDetailsForm = new Book_Details(selectedRoom);
+                bookDetailsForm.Show();
             }
         }
 
@@ -126,8 +132,25 @@ namespace x.hotel
                     // Add other properties as needed
                 };
 
-                // Pass the selected room data to the Book_Details form
-                Book_Details bookDetailsForm = new Book_Details(selectedRoom);
+                // Pass the selected room data and occupancy details to the Book_Details form
+                OccupancyDetails occupancyDetails = new OccupancyDetails
+                {
+                    startDate = dateTimePicker1.Value.ToString("MM/dd/yyyy"),
+                    endDate = dateTimePicker2.Value.ToString("MM/dd/yyyy"),
+                    isOccupied = false,
+                    transId = string.Empty,
+                };
+
+                // Update the Start Date and End Date columns in the DataGridView
+                Rooms1.Rows[selectedIndex].Cells["startDate"].Value = occupancyDetails.startDate;
+                Rooms1.Rows[selectedIndex].Cells["endDate"].Value = occupancyDetails.endDate;
+
+                // Update the database with the Start Date and End Date within the specific room
+                var Room = $"Rooms/{selectedRoom.roomNumber}/occupancyDetails"; // Adjust the key based on your database structure
+                Client.Set(Room + "/startDate", occupancyDetails.startDate);
+                Client.Set(Room + "/endDate", occupancyDetails.endDate);
+
+                Book_Details bookDetailsForm = new Book_Details(selectedRoom, occupancyDetails);
                 bookDetailsForm.Show();
             }
             else
