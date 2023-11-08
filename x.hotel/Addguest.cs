@@ -103,9 +103,6 @@ namespace x.hotel
                     // Add other properties as needed
                 };
 
-                // Pass the selected room data to the NextForm
-                Book_Details nextForm = new Book_Details(selectedRoom);
-                nextForm.Show();
             }
         }
 

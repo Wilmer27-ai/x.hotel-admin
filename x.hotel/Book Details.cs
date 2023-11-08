@@ -16,6 +16,7 @@ namespace x.hotel
     public partial class Book_Details : Form
     {
         private Room selectedRoom;
+        private int TotalAmount;
         private IFirebaseConfig Config;
         private IFirebaseClient Client;
 
@@ -67,5 +68,43 @@ namespace x.hotel
             // var response = await Client.SetAsync("BookedRooms/" + selectedRoom.roomNumber, selectedRoom);
             // MessageBox.Show("Room Booked!");
         }
+
+        private async void button1_ClickAsync(object sender, EventArgs e)
+        {
+            // Get guest details from the user input
+            string guestId = GenerateGuestId(); // You need to implement GenerateGuestId() method
+            string firstName = textBox2.Text;
+            string lastName = textBox3.Text;
+            int.TryParse(textBox4.Text, out int age);
+
+            string contactNumber = textBox5.Text;
+            string address = textBox6.Text;
+
+            // Create a Guest object
+            Guest guest = new Guest
+            {
+                GuestId = guestId,
+                FirstName = firstName,
+                LastName = lastName,
+                Age = age,
+                ContactNumber = contactNumber,
+                Address = address
+            };
+
+            // Save the guest data to Firebase
+            FirebaseResponse response = await Client.SetAsync($"Guests/{guestId}", guest);
+
+            // Proceed to the Confirm_Payment form with guest and room details
+            Confirm_Payment confirmPaymentForm = new Confirm_Payment(selectedRoom, guest);
+            confirmPaymentForm.Show();
+        }
+
+        // Method to generate a unique guest ID (you can modify it based on your requirements)
+        private string GenerateGuestId()
+        {
+            // Implement your logic to generate a unique guest ID here
+            // For example, you can concatenate current date and time or use a GUID
+            return Guid.NewGuid().ToString();
+        }
     }
-}
+    }
