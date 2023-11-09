@@ -16,7 +16,6 @@ namespace x.hotel
     public partial class Book_Details : Form
     {
         private Room selectedRoom;
-        private OccupancyDetails occupancyDetails;
         private IFirebaseConfig Config;
         private IFirebaseClient Client;
 
