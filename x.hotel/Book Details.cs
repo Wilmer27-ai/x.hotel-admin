@@ -87,17 +87,18 @@ namespace x.hotel
         private async void button1_ClickAsync(object sender, EventArgs e)
         {
             // Get guest details from the user input
-            string guestId = GenerateGuestId(); // You need to implement GenerateGuestId() method
+            string guestId = GenerateGuestId();
             string firstName = textBox2.Text;
             string lastName = textBox3.Text;
             int.TryParse(textBox4.Text, out int age);
-
             string contactNumber = textBox5.Text;
             string address = textBox6.Text;
             string sex = checkBox1.Checked ? "Male" : (checkBox2.Checked ? "Female" : "");
+
             // Get the start and end dates from DateTimePickers
             string startDate = dateTimePicker1.Value.ToString("MM/dd/yyyy");
             string endDate = dateTimePicker2.Value.ToString("MM/dd/yyyy");
+
             // Create a Guest object
             Guest guest = new Guest
             {
@@ -109,17 +110,20 @@ namespace x.hotel
                 Address = address,
                 Sex = sex
             };
+
+            // Create a new OccupancyDetails object
             OccupancyDetails occupancyDetails = new OccupancyDetails
             {
                 startDate = startDate,
                 endDate = endDate,
-                isOccupied = true, // Set to true since the room is booked
-                transId = GenerateTransactionId() // You need to implement GenerateTransactionId() method
+                isOccupied = true,
+                transId = GenerateTransactionId()
             };
 
-            // Use UpdateAsync to update specific fields in the occupancyDetails
-            FirebaseResponse updateResponse = await Client.UpdateAsync($"Rooms/{selectedRoom.roomNumber}", new { occupancyDetails });
+            // Use UpdateAsync to update specific fields in the occupancyDetails for the selected room number
+            FirebaseResponse updateResponse = await Client.UpdateAsync($"Rooms/{selectedRoom.roomNumber}/occupancyDetails", occupancyDetails);
 
+            // Proceed to the Confirm_Payment form with guest and room details
             Confirm_Payment confirmPaymentForm = new Confirm_Payment(selectedRoom, guest);
             confirmPaymentForm.Show();
         }
