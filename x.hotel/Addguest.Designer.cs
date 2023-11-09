@@ -40,7 +40,7 @@
             this.Rooms1.BackgroundColor = System.Drawing.Color.LightSkyBlue;
             this.Rooms1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Rooms1.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Rooms1.Location = new System.Drawing.Point(50, 74);
+            this.Rooms1.Location = new System.Drawing.Point(50, 102);
             this.Rooms1.Name = "Rooms1";
             this.Rooms1.RowHeadersWidth = 51;
             this.Rooms1.RowTemplate.Height = 24;
