@@ -30,7 +30,18 @@ namespace x.hotel
             PopulateNextFormRooms();
         }
 
-
+        private string GenerateGuestId()
+        {
+            // Implement your logic to generate a unique guest ID here
+            // For example, you can concatenate the current date and time or use a GUID
+            return Guid.NewGuid().ToString();
+        }
+        private string GenerateTransactionId()
+        {
+            // Implement your logic to generate a unique guest ID here
+            // For example, you can concatenate the current date and time or use a GUID
+            return Guid.NewGuid().ToString();
+        }
 
         private void InitializeFirebase()
         {
@@ -63,8 +74,6 @@ namespace x.hotel
                 selectedRoom.bedCount,
                 selectedRoom.roomDailyRate,
                 selectedRoom.roomDailyRate
-
-
             );
 
             // You can perform additional Firebase operations if needed
@@ -86,6 +95,9 @@ namespace x.hotel
             string contactNumber = textBox5.Text;
             string address = textBox6.Text;
             string sex = checkBox1.Checked ? "Male" : (checkBox2.Checked ? "Female" : "");
+            // Get the start and end dates from DateTimePickers
+            string startDate = dateTimePicker1.Value.ToString("MM/dd/yyyy");
+            string endDate = dateTimePicker2.Value.ToString("MM/dd/yyyy");
             // Create a Guest object
             Guest guest = new Guest
             {
@@ -97,21 +109,19 @@ namespace x.hotel
                 Address = address,
                 Sex = sex
             };
+            OccupancyDetails occupancyDetails = new OccupancyDetails
+            {
+                startDate = startDate,
+                endDate = endDate,
+                isOccupied = true, // Set to true since the room is booked
+                transId = GenerateTransactionId() // You need to implement GenerateTransactionId() method
+            };
 
-            // Save the guest data to Firebase
-            FirebaseResponse response = await Client.SetAsync($"Guests/{guestId}", guest);
+            // Use UpdateAsync to update specific fields in the occupancyDetails
+            FirebaseResponse updateResponse = await Client.UpdateAsync($"Rooms/{selectedRoom.roomNumber}", new { occupancyDetails });
 
-            // Proceed to the Confirm_Payment form with guest and room details
             Confirm_Payment confirmPaymentForm = new Confirm_Payment(selectedRoom, guest);
             confirmPaymentForm.Show();
         }
-
-        // Method to generate a unique guest ID (you can modify it based on your requirements)
-        private string GenerateGuestId()
-        {
-            // Implement your logic to generate a unique guest ID here
-            // For example, you can concatenate current date and time or use a GUID
-            return Guid.NewGuid().ToString();
-        }
     }
-    }
+}

@@ -25,9 +25,9 @@ namespace x.hotel
 
     public class OccupancyDetails
     {
+        public string startDate { get; set; }
         public string endDate { get; set; }
         public bool isOccupied { get; set; }
-        public string startDate { get; set; }
         public string transId { get; set; }
     }
 
