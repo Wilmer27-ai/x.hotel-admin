@@ -8,6 +8,7 @@ namespace x.hotel
 {
     public class Room
     {
+
         public int bedCount { get; set; }
         public OccupancyDetails occupancyDetails { get; set; }
         public int roomCapacity { get; set; }

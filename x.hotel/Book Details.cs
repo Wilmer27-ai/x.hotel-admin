@@ -20,20 +20,18 @@ namespace x.hotel
         private IFirebaseConfig Config;
         private IFirebaseClient Client;
 
+
+
         // Constructor with two arguments
-        public Book_Details(Room selectedRoom, OccupancyDetails occupancyDetails)
+        public Book_Details(Room selectedRoom)
         {
             InitializeComponent();
             this.selectedRoom = selectedRoom;
-            this.occupancyDetails = occupancyDetails;
             InitializeFirebase();
             PopulateNextFormRooms();
         }
 
-        public Book_Details(Room selectedRoom)
-        {
-            this.selectedRoom = selectedRoom;
-        }
+
 
         private void InitializeFirebase()
         {
@@ -66,6 +64,8 @@ namespace x.hotel
                 selectedRoom.bedCount,
                 selectedRoom.roomDailyRate,
                 selectedRoom.roomDailyRate
+
+
             );
 
             // You can perform additional Firebase operations if needed
