@@ -116,6 +116,12 @@
     <Compile Include="Confirm Payment.Designer.cs">
       <DependentUpon>Confirm Payment.cs</DependentUpon>
     </Compile>
+    <Compile Include="confirmationfinal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="confirmationfinal.Designer.cs">
+      <DependentUpon>confirmationfinal.cs</DependentUpon>
+    </Compile>
     <Compile Include="dashboard-xhotel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Confirm Payment.resx">
       <DependentUpon>Confirm Payment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="confirmationfinal.resx">
+      <DependentUpon>confirmationfinal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dashboard-xhotel.resx">
       <DependentUpon>dashboard-xhotel.cs</DependentUpon>
