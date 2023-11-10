@@ -91,6 +91,12 @@
     <Compile Include="Addguest.Designer.cs">
       <DependentUpon>Addguest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Addguestfinal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Addguestfinal.Designer.cs">
+      <DependentUpon>Addguestfinal.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddRoom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +177,9 @@
     </Compile>
     <EmbeddedResource Include="Addguest.resx">
       <DependentUpon>Addguest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Addguestfinal.resx">
+      <DependentUpon>Addguestfinal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddRoom.resx">
       <DependentUpon>AddRoom.cs</DependentUpon>
