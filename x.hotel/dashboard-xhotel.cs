@@ -22,7 +22,7 @@ namespace x.hotel
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Addguest newForm = new Addguest();
+            Addguestfinal newForm = new Addguestfinal();
             // Show the new form
             newForm.Show();
         }

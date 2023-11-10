@@ -1,4 +1,6 @@
-﻿namespace x.hotel
+﻿using System;
+
+namespace x.hotel
 {
     partial class Addguestfinal
     {
@@ -29,7 +31,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.Rooms1 = new System.Windows.Forms.DataGridView();
+            this.RoomsdataGrid = new System.Windows.Forms.DataGridView();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
@@ -39,13 +41,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.Rooms1)).BeginInit();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.RoomsdataGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,21 +58,21 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(376, 29);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(253, 32);
+            this.label1.Size = new System.Drawing.Size(254, 32);
             this.label1.TabIndex = 5;
             this.label1.Text = "WALK-IN GUESTS";
             // 
-            // Rooms1
+            // RoomsdataGrid
             // 
-            this.Rooms1.BackgroundColor = System.Drawing.Color.LightSkyBlue;
-            this.Rooms1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Rooms1.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.Rooms1.Location = new System.Drawing.Point(89, 108);
-            this.Rooms1.Name = "Rooms1";
-            this.Rooms1.RowHeadersWidth = 51;
-            this.Rooms1.RowTemplate.Height = 24;
-            this.Rooms1.Size = new System.Drawing.Size(805, 240);
-            this.Rooms1.TabIndex = 6;
+            this.RoomsdataGrid.BackgroundColor = System.Drawing.Color.LightSkyBlue;
+            this.RoomsdataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.RoomsdataGrid.GridColor = System.Drawing.SystemColors.ActiveCaption;
+            this.RoomsdataGrid.Location = new System.Drawing.Point(89, 108);
+            this.RoomsdataGrid.Name = "RoomsdataGrid";
+            this.RoomsdataGrid.RowHeadersWidth = 51;
+            this.RoomsdataGrid.RowTemplate.Height = 24;
+            this.RoomsdataGrid.Size = new System.Drawing.Size(805, 240);
+            this.RoomsdataGrid.TabIndex = 6;
             // 
             // label11
             // 
@@ -78,7 +80,7 @@
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(372, 82);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(84, 16);
+            this.label11.Size = new System.Drawing.Size(91, 17);
             this.label11.TabIndex = 37;
             this.label11.Text = "Check-out :";
             // 
@@ -88,7 +90,7 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(90, 82);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(71, 16);
+            this.label10.Size = new System.Drawing.Size(76, 17);
             this.label10.TabIndex = 36;
             this.label10.Text = "Check-in:";
             // 
@@ -128,7 +130,7 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(214, 55);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(121, 16);
+            this.label7.Size = new System.Drawing.Size(129, 17);
             this.label7.TabIndex = 40;
             this.label7.Text = "Contact Number:";
             // 
@@ -138,9 +140,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(416, 54);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 16);
+            this.label3.Size = new System.Drawing.Size(103, 17);
             this.label3.TabIndex = 39;
-            this.label3.Text = "Payment Method:";
+            this.label3.Text = "Guest Count:";
             // 
             // label2
             // 
@@ -148,17 +150,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(23, 55);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 16);
+            this.label2.Size = new System.Drawing.Size(59, 17);
             this.label2.TabIndex = 38;
             this.label2.Text = "Name: ";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(412, 73);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(178, 24);
-            this.comboBox1.TabIndex = 44;
             // 
             // textBox1
             // 
@@ -174,7 +168,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(18, 24);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 16);
+            this.label4.Size = new System.Drawing.Size(119, 17);
             this.label4.TabIndex = 45;
             this.label4.Text = "Transaction ID:";
             // 
@@ -200,7 +194,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.textBox1);
@@ -214,6 +208,13 @@
             this.groupBox1.TabIndex = 51;
             this.groupBox1.TabStop = false;
             // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(419, 75);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 22);
+            this.textBox3.TabIndex = 47;
+            // 
             // Addguestfinal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -226,10 +227,11 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.Rooms1);
+            this.Controls.Add(this.RoomsdataGrid);
             this.Controls.Add(this.label1);
             this.Name = "Addguestfinal";
-            ((System.ComponentModel.ISupportInitialize)(this.Rooms1)).EndInit();
+            this.Load += new System.EventHandler(this.Addguestfinal_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.RoomsdataGrid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -237,10 +239,11 @@
 
         }
 
+     
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView Rooms1;
+        private System.Windows.Forms.DataGridView RoomsdataGrid;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
@@ -250,11 +253,11 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }

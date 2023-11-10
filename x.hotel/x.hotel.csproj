@@ -85,12 +85,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Addguest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Addguest.Designer.cs">
-      <DependentUpon>Addguest.cs</DependentUpon>
-    </Compile>
     <Compile Include="Addguestfinal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,9 +169,6 @@
     <Compile Include="UpdateRoom.Designer.cs">
       <DependentUpon>UpdateRoom.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Addguest.resx">
-      <DependentUpon>Addguest.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Addguestfinal.resx">
       <DependentUpon>Addguestfinal.cs</DependentUpon>
     </EmbeddedResource>

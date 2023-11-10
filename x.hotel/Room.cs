@@ -6,28 +6,11 @@ using System.Threading.Tasks;
 
 namespace x.hotel
 {
-    public class Room
-    {
-
-        public int bedCount { get; set; }
-        public OccupancyDetails occupancyDetails { get; set; }
-        public int roomCapacity { get; set; }
-        public string roomClassification { get; set; }
-        public int roomDailyRate { get; set; }
-        public string roomDescription { get; set; }
-        public RoomFeatures roomFeatures { get; set; }
-        public RoomImages roomImages { get; set; }
-        public string roomName { get; set; }
-        public int roomNumber { get; set; }
-        public int? roomHourlyRate { get; set; }
-        
-    }
-
     public class OccupancyDetails
     {
-        public string startDate { get; set; }
         public string endDate { get; set; }
         public bool isOccupied { get; set; }
+        public string startDate { get; set; }
         public string transId { get; set; }
     }
 
@@ -44,6 +27,25 @@ namespace x.hotel
         public string img1 { get; set; }
         public string img2 { get; set; }
         public string img3 { get; set; }
+    }
+
+    public class Room
+    {
+        public int bedCount { get; set; }
+        public OccupancyDetails occupancyDetails { get; set; }
+        public int roomCapacity { get; set; }
+        public string roomClassification { get; set; }
+        public int roomDailyRate { get; set; }
+        public string roomDescription { get; set; }
+        public RoomFeatures roomFeatures { get; set; }
+        public int? roomHourlyRate { get; set; } // Nullable int if the property is optional
+        public RoomImages roomImages { get; set; }
         public string roomName { get; set; }
+        public int roomNumber { get; set; }
+    }
+
+    public class Root
+    {
+        public Dictionary<string, Room> Rooms { get; set; }
     }
 }
