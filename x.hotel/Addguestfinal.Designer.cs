@@ -39,14 +39,12 @@ namespace x.hotel
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.RoomsdataGrid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -135,16 +133,6 @@ namespace x.hotel
             this.label7.TabIndex = 40;
             this.label7.Text = "Contact Number:";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(416, 54);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 17);
-            this.label3.TabIndex = 39;
-            this.label3.Text = "Guest Count:";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -196,9 +184,7 @@ namespace x.hotel
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label4);
@@ -209,13 +195,6 @@ namespace x.hotel
             this.groupBox1.Size = new System.Drawing.Size(805, 127);
             this.groupBox1.TabIndex = 51;
             this.groupBox1.TabStop = false;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(419, 75);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 22);
-            this.textBox3.TabIndex = 47;
             // 
             // Addguestfinal
             // 
@@ -253,13 +232,11 @@ namespace x.hotel
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox3;
     }
 }

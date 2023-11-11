@@ -8,74 +8,60 @@ namespace x.hotel
 {
     using System;
     using System.Collections.Generic;
-        public class Admin
+        public class occupancyDetails
         {
-            public string AdminId { get; set; }
-            public string Password { get; set; }
-            public string Username { get; set; }
-        }
-
-        public class OccupancyDetails
-        {
-            public string EndDate { get; set; }
-            public bool IsOccupied { get; set; }
-            public string StartDate { get; set; }
-            public string TransId { get; set; }
+            public string endDate { get; set; }
+            public bool isOccupied { get; set; }
+            public string startDate { get; set; }
+            public string transId { get; set; }
         }
 
         public class RoomFeatures
         {
-            public bool HasCityView { get; set; }
-            public bool HasPrivatePool { get; set; }
-            public bool HasShower { get; set; }
-            public bool IsPetFriendly { get; set; }
+            public bool hasCityView { get; set; }
+            public bool hasPrivatePool { get; set; }
+            public bool hasShower { get; set; }
+            public bool isPetFriendly { get; set; }
         }
 
         public class RoomImages
         {
-            public string Img1 { get; set; }
-            public string Img2 { get; set; }
-            public string Img3 { get; set; }
+            public string img1 { get; set; }
+            public string img2 { get; set; }
+            public string img3 { get; set; }
         }
 
         public class Room
         {
-            public int BedCount { get; set; }
-            public OccupancyDetails OccupancyDetails { get; set; }
-            public int RoomCapacity { get; set; }
-            public string RoomClassification { get; set; }
-            public int RoomDailyRate { get; set; }
-            public string RoomDescription { get; set; }
-            public RoomFeatures RoomFeatures { get; set; }
-            public int? RoomHourlyRate { get; set; } // Nullable int if the property is optional
-            public RoomImages RoomImages { get; set; }
-            public string RoomName { get; set; }
-            public int RoomNumber { get; set; }
+            public int bedCount { get; set; }
+            public occupancyDetails occupancyDetails { get; set; }
+            public int roomCapacity { get; set; }
+            public string roomClassification { get; set; }
+            public int roomDailyRate { get; set; }
+            public string roomDescription { get; set; }
+            public RoomFeatures roomFeatures { get; set; }
+            public int? roomHourlyRate { get; set; } // Nullable int if the property is optional
+            public RoomImages roomImages { get; set; }
+            public string roomName { get; set; }
+            public int roomNumber { get; set; }
         }
 
         public class Transaction
         {
-            public string CustomerName { get; set; }
-            public string CustomerPhoneNumber { get; set; }
-            public int GuestCount { get; set; }
-            public string PaymentMethod { get; set; }
-            public RoomDetails RoomDetails { get; set; }
-            public int TransAmount { get; set; }
-            public DateTime TransDate { get; set; }
-            public string TransId { get; set; }
+            public string customerName { get; set; }
+            public string customerPhoneNumber { get; set; }
+            public int guestCount { get; set; }
+            public string paymentMethod { get; set; }
+            public RoomDetails roomDetails { get; set; }
+            public int transAmount { get; set; }
+            public DateTime transDate { get; set; }
+            public string transId { get; set; }
         }
 
         public class RoomDetails
         {
-            public string EndDate { get; set; }
-            public int RoomNumber { get; set; }
-            public string StartDate { get; set; }
-        }
-
-        public class Root
-        {
-            public Dictionary<string, Admin> Admins { get; set; }
-            public Dictionary<string, Room> Rooms { get; set; }
-            public Dictionary<string, Transaction> Transactions { get; set; }
+            public string endDate { get; set; }
+            public int roomNumber { get; set; }
+            public string startDate { get; set; }
         }
     }

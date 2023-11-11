@@ -74,13 +74,13 @@ namespace x.hotel
             foreach (var room in rooms)
             {
                 RoomsdataGrid.Rows.Add(
-                    room.Value.RoomName,
-                    room.Value.RoomClassification,
-                    room.Value.RoomNumber,
-                    room.Value.RoomCapacity,
-                    room.Value.BedCount,
-                    room.Value.RoomDailyRate,
-                    room.Value.RoomDailyRate,
+                    room.Value.roomName,
+                    room.Value.roomClassification,
+                    room.Value.roomNumber,
+                    room.Value.roomCapacity,
+                    room.Value.bedCount,
+                    room.Value.roomDailyRate,
+                    room.Value.roomDailyRate,
                     string.Empty,
                     string.Empty
                 );
@@ -104,25 +104,49 @@ namespace x.hotel
 
             var transaction = new
             {
-                CustomerName = customerName,
-                CustomerPhoneNumber = customerPhoneNumber,
-                GuestCount = guestCount,
-                PaymentMethod = "Walk In",
-                RoomDetails = new
+                customerName = customerName,
+                customerPhoneNumber = customerPhoneNumber,
+                guestCount = guestCount,
+                paymentMethod = "WalkIn",
+                roomDetails = new
                 {
-                    StartDate = startDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                    RoomNumber = roomNumber,
-                    EndDate = endDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                    startDate = startDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                    roomNumber = roomNumber,
+                    endDate = endDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                 },
-                TransAmount = totalAmount,
-                TransDate = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                TransId = transactionId
+                transAmount = totalAmount,
+                transDate = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                transId = transactionId
             };
 
             try
             {
+                // Save the transaction
                 FirebaseResponse response = Client.Set($"Transactions/{transactionId}", transaction);
-                // Check the response if needed
+
+                // Check if the room with the given roomNumber already exists
+                FirebaseResponse roomResponse = Client.Get($"Rooms/{roomNumber}");
+                if (roomResponse.Body != "null")
+                {
+                    // Room exists, update the occupancy details
+                    var existingRoom = roomResponse.ResultAs<Room>();
+                    existingRoom.occupancyDetails = new occupancyDetails
+                    {
+                        startDate = startDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                        endDate = endDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                        isOccupied = true,
+                        transId = transactionId
+                    };
+
+                    // Update the room with the modified occupancy details
+                    FirebaseResponse updateResponse = Client.Update($"Rooms/{roomNumber}", existingRoom);
+
+                    // Check the response if needed
+                }
+                else
+                {
+                    Console.WriteLine($"Room with roomNumber {roomNumber} not found.");
+                }
             }
             catch (Exception ex)
             {
@@ -130,20 +154,32 @@ namespace x.hotel
             }
         }
 
+
         private void button4_Click(object sender, EventArgs e)
         {
-            // Add your logic to handle the button click event
-            // For example, get values from textboxes, datepickers, etc.
-            string customerName = "Sample Name";
-            string customerPhoneNumber = "1234567890";
-            int guestCount = 2;
-            int roomNumber = 101;
-            DateTime startDate = DateTime.Now;
-            DateTime endDate = DateTime.Now.AddDays(2);
-            int totalAmount = 200;
+            // Get the selected row from the DataGridView
+            if (RoomsdataGrid.SelectedRows.Count > 0)
+            {
+                // Assuming guestCount and roomNumber are columns in the DataGridView
+                int guestCount = (int)RoomsdataGrid.SelectedRows[0].Cells["roomCapacity"].Value;
+                int roomNumber = (int)RoomsdataGrid.SelectedRows[0].Cells["roomNumber"].Value;
+                int totalAmount = (int)RoomsdataGrid.SelectedRows[0].Cells["roomDailyRate"].Value;
+                // You can add additional logic to get other values if needed
+                DateTime startDate = dateTimePicker1.Value;
+                DateTime endDate = dateTimePicker2.Value;
 
-            // Call SaveTransaction with the obtained values
-            SaveTransaction(customerName, customerPhoneNumber, guestCount, roomNumber, startDate, endDate, totalAmount);
+                // Get other values from textboxes, datepickers, etc.
+                string customerName = textBox2.Text;
+                string customerPhoneNumber = textBox5.Text;
+
+                // Call SaveTransaction with the obtained values
+                SaveTransaction(customerName, customerPhoneNumber, guestCount, roomNumber, startDate, endDate, totalAmount);
+            }
+            else
+            {
+                // Display a message to inform the user to select a row in the DataGridView
+                MessageBox.Show("Please select a room from the DataGridView.");
+            }
         }
 
         private void RoomsdataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
