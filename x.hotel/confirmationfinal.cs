@@ -14,10 +14,11 @@ namespace x.hotel
     {
         public confirmationfinal(string transactionId, int totalAmount)
         {
+            confirmationfinal confirmationForm = new confirmationfinal(transactionId, totalAmount);
+            confirmationForm.ShowDialog();
             InitializeComponent();
-            // Set the labels with the provided values
-            label1.Text = $"Transaction ID: {transactionId}";
-            label2.Text = $"Total Amount: ${totalAmount}";
+            textBox1.Text = transactionId;
+            textBox2.Text = totalAmount.ToString();
         }
 
         private void confirmationfinal_Load(object sender, EventArgs e)

@@ -73,6 +73,7 @@ namespace x.hotel
             this.RoomsdataGrid.RowTemplate.Height = 24;
             this.RoomsdataGrid.Size = new System.Drawing.Size(805, 240);
             this.RoomsdataGrid.TabIndex = 6;
+            this.RoomsdataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RoomsdataGrid_CellContentClick);
             // 
             // label11
             // 
