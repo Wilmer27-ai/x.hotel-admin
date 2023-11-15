@@ -31,7 +31,6 @@ namespace x.hotel
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dashboard_xhotel));
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -59,16 +58,6 @@ namespace x.hotel
             this.button2.TabIndex = 1;
             this.button2.Text = "Manage Rooms";
             this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button3.Location = new System.Drawing.Point(716, 12);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(113, 31);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Dashboard";
-            this.button3.UseVisualStyleBackColor = false;
             // 
             // button4
             // 
@@ -284,7 +273,6 @@ namespace x.hotel
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.DoubleBuffered = true;
             this.Name = "dashboard_xhotel";
@@ -296,7 +284,6 @@ namespace x.hotel
 
         #endregion
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

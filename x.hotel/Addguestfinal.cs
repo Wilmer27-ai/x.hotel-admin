@@ -13,6 +13,7 @@ using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
 using Newtonsoft.Json;
+using FireSharp.Extensions;
 namespace x.hotel
 {
     public partial class Addguestfinal : Form
@@ -102,50 +103,81 @@ namespace x.hotel
         {
             string transactionId = GenerateTransactionId();
 
-            var transaction = new
-            {
-                customerName = customerName,
-                customerPhoneNumber = customerPhoneNumber,
-                guestCount = guestCount,
-                paymentMethod = "WalkIn",
-                roomDetails = new
-                {
-                    startDate = startDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                    roomNumber = roomNumber,
-                    endDate = endDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
-                },
-                transAmount = totalAmount,
-                transDate = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                transId = transactionId
-            };
-
             try
             {
                 // Save the transaction
-                FirebaseResponse response = Client.Set($"Transactions/{transactionId}", transaction);
-
-                // Check if the room with the given roomNumber already exists
-                FirebaseResponse roomResponse = Client.Get($"Rooms/{roomNumber}");
-                if (roomResponse.Body != "null")
+                FirebaseResponse response = Client.Set($"Transactions/{transactionId}", new
                 {
-                    // Room exists, update the occupancy details
-                    var existingRoom = roomResponse.ResultAs<Room>();
-                    existingRoom.occupancyDetails = new occupancyDetails
+                    customerName = customerName,
+                    customerPhoneNumber = customerPhoneNumber,
+                    guestCount = guestCount,
+                    paymentMethod = "WalkIn",
+                    roomDetails = new
                     {
                         startDate = startDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                        endDate = endDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                        isOccupied = true,
-                        transId = transactionId
-                    };
+                        roomNumber = roomNumber,
+                        endDate = endDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+                    },
+                    transAmount = totalAmount,
+                    transDate = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                    transId = transactionId
+                });
 
-                    // Update the room with the modified occupancy details
-                    FirebaseResponse updateResponse = Client.Update($"Rooms/{roomNumber}", existingRoom);
+                // Query the room with the given roomNumber
+                string firebaseUrl = "YOUR_DATABASE_URL";
+                string queryUrl = $"{firebaseUrl}/Rooms.json?orderBy=\"roomNumber\"&equalTo={roomNumber}&limitToFirst=1";
 
-                    // Check the response if needed
-                }
-                else
+                using (HttpClient client = new HttpClient())
                 {
-                    Console.WriteLine($"Room with roomNumber {roomNumber} not found.");
+                    HttpResponseMessage roomResponse = client.GetAsync(queryUrl).Result;
+
+                    if (roomResponse.IsSuccessStatusCode)
+                    {
+                        string roomJson = roomResponse.Content.ReadAsStringAsync().Result;
+
+                        // Deserialize the room
+                        Dictionary<string, Room> rooms = JsonConvert.DeserializeObject<Dictionary<string, Room>>(roomJson);
+
+                        if (rooms != null && rooms.Count > 0)
+                        {
+                            // Room exists, update the occupancy details
+                            var existingRoom = rooms.Values.First();
+                            existingRoom.occupancyDetails = new occupancyDetails
+                            {
+                                startDate = startDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                endDate = endDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                                isOccupied = true,
+                                transId = transactionId
+                            };
+
+                            // Update the room with the modified occupancy details using PATCH
+                            string updateUrl = $"{firebaseUrl}/Rooms/{roomNumber}.json";
+                            var patchDocument = new JsonPatchDocument();
+                            patchDocument.Replace("/occupancyDetails", existingRoom.occupancyDetails);
+
+                            string patchJson = JsonConvert.SerializeObject(patchDocument);
+                            StringContent patchContent = new StringContent(patchJson, Encoding.UTF8, "application/json");
+                            HttpResponseMessage updateResponse = client.PatchAsync(updateUrl, patchContent).Result;
+
+                            // Check the response if needed
+                            if (updateResponse.IsSuccessStatusCode)
+                            {
+                                Console.WriteLine($"Room with roomNumber {roomNumber} updated successfully.");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Error updating room: {updateResponse.StatusCode} - {updateResponse.ReasonPhrase}");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Room with roomNumber {roomNumber} not found.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Error querying room: {roomResponse.StatusCode} - {roomResponse.ReasonPhrase}");
+                    }
                 }
             }
             catch (Exception ex)
@@ -153,6 +185,9 @@ namespace x.hotel
                 Console.WriteLine($"Error saving transaction: {ex.Message}");
             }
         }
+
+
+
 
 
         private void button4_Click(object sender, EventArgs e)
