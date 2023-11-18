@@ -1,19 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
 using Newtonsoft.Json;
-using FireSharp.Extensions;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Net.Http.Json;
+
 namespace x.hotel
 {
     public partial class Addguestfinal : Form
@@ -36,6 +31,7 @@ namespace x.hotel
             // Initialize the Firebase client and load data
             Client = new FireSharp.FirebaseClient(Config);
             RoomsdataGrid.AutoGenerateColumns = false;
+            RoomsdataGrid.Columns.Add("Key", "Room Key");
             RoomsdataGrid.Columns.Add("roomName", "Room Name");
             RoomsdataGrid.Columns.Add("roomClassification", "Room Type");
             RoomsdataGrid.Columns.Add("roomNumber", "Room No.");
@@ -59,8 +55,13 @@ namespace x.hotel
 
             if (res.Body != "null")
             {
+                Console.WriteLine("Response body:");
+                Console.WriteLine(res.Body);
+
                 Dictionary<string, Room> rooms = JsonConvert.DeserializeObject<Dictionary<string, Room>>(res.Body.ToString());
                 PopulateDataGrid(rooms);
+                Console.WriteLine("Rooms:");
+                Console.WriteLine(rooms.ToString());
             }
             else
             {
@@ -75,6 +76,7 @@ namespace x.hotel
             foreach (var room in rooms)
             {
                 RoomsdataGrid.Rows.Add(
+                    room.Key, // Add the unique key column
                     room.Value.roomName,
                     room.Value.roomClassification,
                     room.Value.roomNumber,
@@ -99,7 +101,7 @@ namespace x.hotel
             textBox1.Text = transactionId;
         }
 
-        private void SaveTransaction(string customerName, string customerPhoneNumber, int guestCount, int roomNumber, DateTime startDate, DateTime endDate, int totalAmount)
+        private async void SaveTransaction(string customerName, string customerPhoneNumber, int guestCount, string roomKey, DateTime startDate, DateTime endDate, int totalAmount, string Key)
         {
             string transactionId = GenerateTransactionId();
 
@@ -115,7 +117,7 @@ namespace x.hotel
                     roomDetails = new
                     {
                         startDate = startDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                        roomNumber = roomNumber,
+                        roomNumber = roomKey, // Use roomKey instead of roomNumber
                         endDate = endDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                     },
                     transAmount = totalAmount,
@@ -123,60 +125,27 @@ namespace x.hotel
                     transId = transactionId
                 });
 
-                // Query the room with the given roomNumber
-                string firebaseUrl = "YOUR_DATABASE_URL";
-                string queryUrl = $"{firebaseUrl}/Rooms.json?orderBy=\"roomNumber\"&equalTo={roomNumber}&limitToFirst=1";
+                // Update the room occupancy details using the unique key (roomNumber)
+                string updateOccupancyUrl = $"{Config.BasePath}/Rooms/{Key}/occupancyDetails.json?auth={Config.AuthSecret}";
+                var occupancyPatchData = new
+                {
+                    startDate = startDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                    endDate = endDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+                    isOccupied = true,
+                    transId = transactionId
+                };
 
                 using (HttpClient client = new HttpClient())
                 {
-                    HttpResponseMessage roomResponse = client.GetAsync(queryUrl).Result;
+                    HttpResponseMessage occupancyResponse = await client.PatchAsJsonAsync(updateOccupancyUrl, occupancyPatchData);
 
-                    if (roomResponse.IsSuccessStatusCode)
+                    if (occupancyResponse.IsSuccessStatusCode)
                     {
-                        string roomJson = roomResponse.Content.ReadAsStringAsync().Result;
-
-                        // Deserialize the room
-                        Dictionary<string, Room> rooms = JsonConvert.DeserializeObject<Dictionary<string, Room>>(roomJson);
-
-                        if (rooms != null && rooms.Count > 0)
-                        {
-                            // Room exists, update the occupancy details
-                            var existingRoom = rooms.Values.First();
-                            existingRoom.occupancyDetails = new occupancyDetails
-                            {
-                                startDate = startDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                endDate = endDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
-                                isOccupied = true,
-                                transId = transactionId
-                            };
-
-                            // Update the room with the modified occupancy details using PATCH
-                            string updateUrl = $"{firebaseUrl}/Rooms/{roomNumber}.json";
-                            var patchDocument = new JsonPatchDocument();
-                            patchDocument.Replace("/occupancyDetails", existingRoom.occupancyDetails);
-
-                            string patchJson = JsonConvert.SerializeObject(patchDocument);
-                            StringContent patchContent = new StringContent(patchJson, Encoding.UTF8, "application/json");
-                            HttpResponseMessage updateResponse = client.PatchAsync(updateUrl, patchContent).Result;
-
-                            // Check the response if needed
-                            if (updateResponse.IsSuccessStatusCode)
-                            {
-                                Console.WriteLine($"Room with roomNumber {roomNumber} updated successfully.");
-                            }
-                            else
-                            {
-                                Console.WriteLine($"Error updating room: {updateResponse.StatusCode} - {updateResponse.ReasonPhrase}");
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine($"Room with roomNumber {roomNumber} not found.");
-                        }
+                        Console.WriteLine($"Room occupancy for {roomKey} updated successfully.");
                     }
                     else
                     {
-                        Console.WriteLine($"Error querying room: {roomResponse.StatusCode} - {roomResponse.ReasonPhrase}");
+                        Console.WriteLine($"Error updating room occupancy: {occupancyResponse.StatusCode} - {occupancyResponse.ReasonPhrase}");
                     }
                 }
             }
@@ -186,19 +155,16 @@ namespace x.hotel
             }
         }
 
-
-
-
-
         private void button4_Click(object sender, EventArgs e)
         {
             // Get the selected row from the DataGridView
             if (RoomsdataGrid.SelectedRows.Count > 0)
             {
-                // Assuming guestCount and roomNumber are columns in the DataGridView
+                // Assuming guestCount and roomKey are columns in the DataGridView
                 int guestCount = (int)RoomsdataGrid.SelectedRows[0].Cells["roomCapacity"].Value;
-                int roomNumber = (int)RoomsdataGrid.SelectedRows[0].Cells["roomNumber"].Value;
+                string roomKey = RoomsdataGrid.SelectedRows[0].Cells["roomNumber"].Value.ToString(); // Use roomKey instead of roomNumber
                 int totalAmount = (int)RoomsdataGrid.SelectedRows[0].Cells["roomDailyRate"].Value;
+                string Key = RoomsdataGrid.SelectedRows[0].Cells["Key"].Value.ToString();
                 // You can add additional logic to get other values if needed
                 DateTime startDate = dateTimePicker1.Value;
                 DateTime endDate = dateTimePicker2.Value;
@@ -208,7 +174,7 @@ namespace x.hotel
                 string customerPhoneNumber = textBox5.Text;
 
                 // Call SaveTransaction with the obtained values
-                SaveTransaction(customerName, customerPhoneNumber, guestCount, roomNumber, startDate, endDate, totalAmount);
+                SaveTransaction(customerName, customerPhoneNumber, guestCount, roomKey, startDate, endDate, totalAmount, Key);
             }
             else
             {
@@ -224,6 +190,7 @@ namespace x.hotel
                 if (RoomsdataGrid.SelectedRows.Count > 0)
                 {
                     int selectedRoomNumber = (int)RoomsdataGrid.SelectedRows[0].Cells["roomNumber"].Value;
+                    string selectedRoomKey = RoomsdataGrid.SelectedRows[0].Cells["Key"].Value.ToString();
                     // Use the selected room number as needed
                     // You can save it to the roomDetails or perform other actions
                 }
