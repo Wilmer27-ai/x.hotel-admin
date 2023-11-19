@@ -42,6 +42,7 @@ namespace x.hotel
             this.NameLabel = new System.Windows.Forms.Label();
             this.ContactLabel = new System.Windows.Forms.Label();
             this.TotalAmountLabel = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -64,7 +65,7 @@ namespace x.hotel
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(143, 222);
+            this.button1.Location = new System.Drawing.Point(76, 228);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 37);
             this.button1.TabIndex = 2;
@@ -87,6 +88,7 @@ namespace x.hotel
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(149, 22);
             this.textBox3.TabIndex = 7;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // label4
             // 
@@ -127,42 +129,52 @@ namespace x.hotel
             this.TransLabel.AutoSize = true;
             this.TransLabel.Location = new System.Drawing.Point(143, 35);
             this.TransLabel.Name = "TransLabel";
-            this.TransLabel.Size = new System.Drawing.Size(46, 17);
+            this.TransLabel.Size = new System.Drawing.Size(18, 17);
             this.TransLabel.TabIndex = 12;
-            this.TransLabel.Text = "label7";
+            this.TransLabel.Text = "\"\"";
             // 
             // NameLabel
             // 
             this.NameLabel.AutoSize = true;
             this.NameLabel.Location = new System.Drawing.Point(143, 65);
             this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(46, 17);
+            this.NameLabel.Size = new System.Drawing.Size(18, 17);
             this.NameLabel.TabIndex = 13;
-            this.NameLabel.Text = "label7";
+            this.NameLabel.Text = "\"\"";
             // 
             // ContactLabel
             // 
             this.ContactLabel.AutoSize = true;
             this.ContactLabel.Location = new System.Drawing.Point(143, 93);
             this.ContactLabel.Name = "ContactLabel";
-            this.ContactLabel.Size = new System.Drawing.Size(46, 17);
+            this.ContactLabel.Size = new System.Drawing.Size(18, 17);
             this.ContactLabel.TabIndex = 14;
-            this.ContactLabel.Text = "label7";
+            this.ContactLabel.Text = "\"\"";
             // 
             // TotalAmountLabel
             // 
             this.TotalAmountLabel.AutoSize = true;
             this.TotalAmountLabel.Location = new System.Drawing.Point(143, 125);
             this.TotalAmountLabel.Name = "TotalAmountLabel";
-            this.TotalAmountLabel.Size = new System.Drawing.Size(46, 17);
+            this.TotalAmountLabel.Size = new System.Drawing.Size(18, 17);
             this.TotalAmountLabel.TabIndex = 15;
-            this.TotalAmountLabel.Text = "label7";
+            this.TotalAmountLabel.Text = "\"\"";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(178, 228);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(72, 41);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "Cancel";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // confirmationfinal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(328, 292);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.TotalAmountLabel);
             this.Controls.Add(this.ContactLabel);
             this.Controls.Add(this.NameLabel);
@@ -199,5 +211,6 @@ namespace x.hotel
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Label ContactLabel;
         private System.Windows.Forms.Label TotalAmountLabel;
+        private System.Windows.Forms.Button button2;
     }
 }

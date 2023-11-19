@@ -12,25 +12,54 @@ namespace x.hotel
 {
     public partial class confirmationfinal : Form
     {
-        public confirmationfinal(string transactionId, int totalAmount)
+        private int calculatedAmount;  // Declare calculatedAmount as a class-level variable
+
+        public confirmationfinal(string customerName, string customerPhoneNumber, int calculatedAmount, string transactionId)
         {
-            confirmationfinal confirmationForm = new confirmationfinal(transactionId, totalAmount);
-            confirmationForm.ShowDialog();
             InitializeComponent();
-            textBox1.Text = transactionId;
-            textBox2.Text = totalAmount.ToString();
+
+            // Display transaction details using labels
+            // Assuming you have labels named TransLabel, NameLabel, ContactLabel, and TotalAmountLabel on your form
+            TransLabel.Text = transactionId;
+            NameLabel.Text = customerName;
+            ContactLabel.Text = customerPhoneNumber;
+            TotalAmountLabel.Text = $"{calculatedAmount}"; // Use calculatedAmount
+
+            // Set the class-level calculatedAmount
+            this.calculatedAmount = calculatedAmount;
+
+            // Subscribe to the TextChanged event of textBox1
+            textBox1.TextChanged += textBox3_TextChanged;
         }
 
         private void confirmationfinal_Load(object sender, EventArgs e)
         {
-
+            // If you need to perform any additional logic when the form loads, you can add it here
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            this.DialogResult = DialogResult.OK;
             MessageBox.Show("Booking confirmed!");
             this.Close();
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            // Check if the entered text is a valid number
+            if (int.TryParse(textBox3.Text, out int enteredPayment))
+            {
+                // Calculate and display the change
+                int change = enteredPayment - calculatedAmount;
+
+                // Display the change in textBox2
+                textBox1.Text = change.ToString();
+            }
+            else
+            {
+                // Clear textBox2 if the entered text is not a valid number
+                textBox1.Clear();
+            }
         }
     }
 }

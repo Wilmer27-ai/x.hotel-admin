@@ -107,6 +107,12 @@ namespace x.hotel
 
             try
             {
+                // Calculate the number of days between start date and end date
+                int numberOfDays = (int)(endDate - startDate).TotalDays;
+
+                // Calculate the total amount based on the daily rate and number of days
+                int calculatedAmount = numberOfDays * (int)RoomsdataGrid.SelectedRows[0].Cells["roomDailyRate"].Value;
+
                 // Save the transaction
                 FirebaseResponse response = Client.Set($"Transactions/{transactionId}", new
                 {
@@ -120,7 +126,7 @@ namespace x.hotel
                         roomNumber = roomKey, // Use roomKey instead of roomNumber
                         endDate = endDate.ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
                     },
-                    transAmount = totalAmount,
+                    transAmount = calculatedAmount, // Use the calculated amount
                     transDate = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
                     transId = transactionId
                 });
@@ -155,33 +161,52 @@ namespace x.hotel
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+       private void button4_Click(object sender, EventArgs e)
+{
+    // Get the selected row from the DataGridView
+    if (RoomsdataGrid.SelectedRows.Count > 0)
+    {
+        // Assuming guestCount and roomKey are columns in the DataGridView
+        int guestCount = (int)RoomsdataGrid.SelectedRows[0].Cells["roomCapacity"].Value;
+        string roomKey = RoomsdataGrid.SelectedRows[0].Cells["roomNumber"].Value.ToString(); // Use roomKey instead of roomNumber
+        int totalAmount = (int)RoomsdataGrid.SelectedRows[0].Cells["roomDailyRate"].Value;
+        string Key = RoomsdataGrid.SelectedRows[0].Cells["Key"].Value.ToString();
+        // You can add additional logic to get other values if needed
+        DateTime startDate = dateTimePicker1.Value;
+        DateTime endDate = dateTimePicker2.Value;
+
+        // Get other values from textboxes, datepickers, etc.
+        string customerName = textBox2.Text;
+        string customerPhoneNumber = textBox5.Text;
+
+        // Calculate the number of days between start date and end date
+        int numberOfDays = (int)(endDate - startDate).TotalDays;
+
+        // Calculate the total amount based on the daily rate and number of days
+        int calculatedAmount = numberOfDays * (int)RoomsdataGrid.SelectedRows[0].Cells["roomDailyRate"].Value;
+
+                // Show the confirmation form with transaction details
+              confirmationfinal confirmationForm = new confirmationfinal(customerName, customerPhoneNumber, calculatedAmount, GenerateTransactionId());
+              DialogResult result = confirmationForm.ShowDialog();
+
+                // Check if the user confirmed the booking in the confirmation form
+                if (result == DialogResult.OK)
         {
-            // Get the selected row from the DataGridView
-            if (RoomsdataGrid.SelectedRows.Count > 0)
-            {
-                // Assuming guestCount and roomKey are columns in the DataGridView
-                int guestCount = (int)RoomsdataGrid.SelectedRows[0].Cells["roomCapacity"].Value;
-                string roomKey = RoomsdataGrid.SelectedRows[0].Cells["roomNumber"].Value.ToString(); // Use roomKey instead of roomNumber
-                int totalAmount = (int)RoomsdataGrid.SelectedRows[0].Cells["roomDailyRate"].Value;
-                string Key = RoomsdataGrid.SelectedRows[0].Cells["Key"].Value.ToString();
-                // You can add additional logic to get other values if needed
-                DateTime startDate = dateTimePicker1.Value;
-                DateTime endDate = dateTimePicker2.Value;
-
-                // Get other values from textboxes, datepickers, etc.
-                string customerName = textBox2.Text;
-                string customerPhoneNumber = textBox5.Text;
-
-                // Call SaveTransaction with the obtained values
-                SaveTransaction(customerName, customerPhoneNumber, guestCount, roomKey, startDate, endDate, totalAmount, Key);
-            }
-            else
-            {
-                // Display a message to inform the user to select a row in the DataGridView
-                MessageBox.Show("Please select a room from the DataGridView.");
-            }
+            // Call SaveTransaction with the obtained values
+            SaveTransaction(customerName, customerPhoneNumber, guestCount, roomKey, startDate, endDate, calculatedAmount, Key);
         }
+        else
+        {
+            // User canceled the confirmation, you can handle it accordingly
+            MessageBox.Show("Booking not confirmed.");
+        }
+    }
+    else
+    {
+        // Display a message to inform the user to select a room from the DataGridView
+        MessageBox.Show("Please select a room from the DataGridView.");
+    }
+}
 
         private void RoomsdataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -195,6 +220,11 @@ namespace x.hotel
                     // You can save it to the roomDetails or perform other actions
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
