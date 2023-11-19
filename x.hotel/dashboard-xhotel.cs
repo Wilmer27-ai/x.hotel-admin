@@ -26,5 +26,12 @@ namespace x.hotel
             // Show the new form
             newForm.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ManageRooms newForm = new ManageRooms();
+            // Show the new form
+            newForm.Show();
+        }
     }
 }
