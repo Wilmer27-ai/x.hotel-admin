@@ -75,18 +75,22 @@ namespace x.hotel
 
             foreach (var room in rooms)
             {
-                RoomsdataGrid.Rows.Add(
-                    room.Key, // Add the unique key column
-                    room.Value.roomName,
-                    room.Value.roomClassification,
-                    room.Value.roomNumber,
-                    room.Value.roomCapacity,
-                    room.Value.bedCount,
-                    room.Value.roomDailyRate,
-                    room.Value.roomDailyRate,
-                    string.Empty,
-                    string.Empty
-                );
+                // Check if the room is not occupied before adding it to the DataGridView
+                if (!room.Value.occupancyDetails.isOccupied)
+                {
+                    RoomsdataGrid.Rows.Add(
+                        room.Key, // Add the unique key column
+                        room.Value.roomName,
+                        room.Value.roomClassification,
+                        room.Value.roomNumber,
+                        room.Value.roomCapacity,
+                        room.Value.bedCount,
+                        room.Value.roomDailyRate,
+                        room.Value.roomDailyRate,
+                        string.Empty,
+                        string.Empty
+                    );
+                }
             }
         }
 
