@@ -1,4 +1,6 @@
-﻿namespace x.hotel
+﻿using System;
+
+namespace x.hotel
 {
     partial class AddRoom
     {
@@ -68,30 +70,31 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.button1.Location = new System.Drawing.Point(521, 620);
+            this.button1.Location = new System.Drawing.Point(465, 620);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(123, 42);
             this.button1.TabIndex = 14;
             this.button1.Text = "Add Room";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.Location = new System.Drawing.Point(650, 620);
+            this.button2.Location = new System.Drawing.Point(594, 620);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(123, 42);
             this.button2.TabIndex = 15;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(301, 18);
+            this.label8.Location = new System.Drawing.Point(274, 23);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(223, 32);
             this.label8.TabIndex = 16;
@@ -380,7 +383,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 674);
+            this.ClientSize = new System.Drawing.Size(730, 674);
             this.Controls.Add(this.comboBox5);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
@@ -418,10 +421,12 @@
             this.Controls.Add(this.button1);
             this.Name = "AddRoom";
             this.Text = "AddRoom";
+            this.Load += new System.EventHandler(this.AddRoom_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
+
 
         #endregion
         private System.Windows.Forms.Button button1;
