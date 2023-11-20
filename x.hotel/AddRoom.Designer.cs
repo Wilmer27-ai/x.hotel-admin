@@ -297,8 +297,8 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "True",
-            "False"});
+            "Yes",
+            "No"});
             this.comboBox1.Location = new System.Drawing.Point(192, 295);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(76, 24);
@@ -308,8 +308,8 @@
             // 
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
-            "True",
-            "False"});
+            "Yes",
+            "No"});
             this.comboBox2.Location = new System.Drawing.Point(192, 325);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(76, 24);
@@ -319,8 +319,8 @@
             // 
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
-            "True",
-            "False"});
+            "Yes",
+            "No"});
             this.comboBox3.Location = new System.Drawing.Point(192, 355);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(76, 24);
@@ -330,8 +330,8 @@
             // 
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Items.AddRange(new object[] {
-            "True",
-            "False"});
+            "Yes",
+            "No"});
             this.comboBox4.Location = new System.Drawing.Point(192, 386);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(76, 24);

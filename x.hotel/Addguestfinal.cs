@@ -199,11 +199,6 @@ namespace x.hotel
             // Call SaveTransaction with the obtained values
             SaveTransaction(customerName, customerPhoneNumber, guestCount, roomKey, startDate, endDate, calculatedAmount, Key);
         }
-        else
-        {
-            // User canceled the confirmation, you can handle it accordingly
-            MessageBox.Show("Booking not confirmed.");
-        }
     }
     else
     {
