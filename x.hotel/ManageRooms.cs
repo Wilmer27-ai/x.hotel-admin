@@ -43,6 +43,7 @@ namespace x.hotel
         {
             // Get the selected room classification from the combo box
             string selectedClassification = comboBox1.SelectedItem?.ToString();
+            
 
             FirebaseResponse res = Client.Get("Rooms");
 

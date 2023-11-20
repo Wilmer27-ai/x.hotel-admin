@@ -36,7 +36,9 @@ namespace x.hotel
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            List_of_Guests newForm = new List_of_Guests();
+            // Show the new form
+            newForm.Show();
         }
     }
 }
