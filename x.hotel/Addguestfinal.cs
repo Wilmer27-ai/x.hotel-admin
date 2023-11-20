@@ -76,7 +76,7 @@ namespace x.hotel
             foreach (var room in rooms)
             {
                 // Check if the room is not occupied before adding it to the DataGridView
-                if (!room.Value.occupancyDetails.isOccupied)
+                if (room.Value.occupancyDetails != null && !room.Value.occupancyDetails.isOccupied)
                 {
                     RoomsdataGrid.Rows.Add(
                         room.Key, // Add the unique key column
