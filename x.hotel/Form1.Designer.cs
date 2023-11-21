@@ -32,7 +32,6 @@ namespace x.hotel
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.username1 = new System.Windows.Forms.TextBox();
             this.password2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -50,40 +49,35 @@ namespace x.hotel
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(190, 147);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(160, 112);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 16);
+            this.label1.Size = new System.Drawing.Size(78, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Username";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(194, 212);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(160, 159);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 16);
+            this.label2.Size = new System.Drawing.Size(75, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Password";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(332, 85);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 16);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "X-HOTEL";
-            // 
             // username1
             // 
-            this.username1.Location = new System.Drawing.Point(269, 147);
+            this.username1.Location = new System.Drawing.Point(238, 112);
             this.username1.Name = "username1";
             this.username1.Size = new System.Drawing.Size(257, 22);
             this.username1.TabIndex = 3;
             // 
             // password2
             // 
-            this.password2.Location = new System.Drawing.Point(270, 212);
+            this.password2.Location = new System.Drawing.Point(238, 159);
             this.password2.Name = "password2";
             this.password2.PasswordChar = '*';
             this.password2.Size = new System.Drawing.Size(256, 22);
@@ -91,7 +85,7 @@ namespace x.hotel
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(284, 268);
+            this.button1.Location = new System.Drawing.Point(275, 204);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(80, 36);
             this.button1.TabIndex = 5;
@@ -101,7 +95,7 @@ namespace x.hotel
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(423, 268);
+            this.button2.Location = new System.Drawing.Point(372, 204);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 36);
             this.button2.TabIndex = 6;
@@ -167,13 +161,13 @@ namespace x.hotel
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(690, 380);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.password2);
             this.Controls.Add(this.username1);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "LoginForm";
@@ -192,7 +186,6 @@ namespace x.hotel
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox username1;
         private System.Windows.Forms.TextBox password2;
         private System.Windows.Forms.Button button1;
