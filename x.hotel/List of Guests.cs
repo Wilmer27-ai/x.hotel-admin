@@ -6,7 +6,8 @@ using FireSharp.Interfaces;
 using FireSharp.Response;
 using Newtonsoft.Json;
 using System.Linq;
-
+using System.Net.Http;
+using System.Net.Http.Json;
 namespace x.hotel
 {
     public partial class List_of_Guests : Form
@@ -48,12 +49,14 @@ namespace x.hotel
 
             // Load and display data into the DataGridView when the form is loaded
             loadData();
-
+            
             // Load and display data into the DataGridView when the form is loaded
             LoadData();
             dataGridView2.CellClick += dataGridView2_CellClick;
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             dataGridView2.SelectionChanged += dataGridView2_SelectionChanged;
+            textBoxSearch.TextChanged += textBoxSearch_TextChanged;
+            button1.Click += button1_Click;
         }
         private void LoadData()
         {
@@ -78,11 +81,14 @@ namespace x.hotel
             }
 
             // Fetch data from "Rooms" node
-            FirebaseResponse roomsResponse = Client.Get("Rooms");
+            FirebaseResponse res = Client.Get("Rooms");
 
-            if (roomsResponse.Body != "null")
+            if (res != null && res.Body != "null")
             {
-                Dictionary<string, Room> rooms = JsonConvert.DeserializeObject<Dictionary<string, Room>>(roomsResponse.Body.ToString());
+                Console.WriteLine("Response body:");
+                Console.WriteLine(res.Body);
+
+                Dictionary<string, Room> rooms = JsonConvert.DeserializeObject<Dictionary<string, Room>>(res.Body.ToString());
 
                 // Call PopulateDataGrid to populate dataGridView2 with room data
                 PopulateDataGrid(rooms);
@@ -91,6 +97,7 @@ namespace x.hotel
             // Refresh the DataGridView
             dataGridView1.Refresh();
             dataGridView2.Refresh();
+            loadData();
         }
         private void loadData()
         {
@@ -123,45 +130,210 @@ namespace x.hotel
                         string.Empty,
                         string.Empty
                     );
+                    dataGridView2.Refresh();
                 }
             }
         }
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Check if the clicked cell is not the header
-            if (e.RowIndex >= 0)
+            // Check if the clicked cell is not the header and there is a selected row
+            if (e.RowIndex >= 0 && dataGridView2.SelectedRows.Count > 0)
             {
-                // Get the roomNumber from the clicked row in dataGridView2
-                string clickedRoomNumber = dataGridView2.Rows[e.RowIndex].Cells["roomNumber"].Value.ToString();
+                // Get the roomNumber from the selected row in dataGridView2
+                string clickedRoomNumber = dataGridView2.SelectedRows[0].Cells["roomNumber"].Value?.ToString();
 
-                // Find the corresponding row in dataGridView1
-                DataGridViewRow matchingRow = dataGridView1.Rows
-                    .Cast<DataGridViewRow>()
-                    .Where(row => row.Cells["roomNumber"].Value.ToString() == clickedRoomNumber)
-                    .FirstOrDefault();
-
-                // Highlight the row in dataGridView1 if found
-                if (matchingRow != null)
+                if (!string.IsNullOrEmpty(clickedRoomNumber))
                 {
-                    matchingRow.Selected = true;
-                    dataGridView1.FirstDisplayedScrollingRowIndex = matchingRow.Index;
+                    // Find the corresponding row in dataGridView1
+                    DataGridViewRow matchingRow = dataGridView1.Rows
+                        .Cast<DataGridViewRow>()
+                        .FirstOrDefault(row => row.Cells["roomNumber"].Value?.ToString() == clickedRoomNumber);
+
+                    // Highlight the row in dataGridView1 if found
+                    if (matchingRow != null)
+                    {
+                        // Check if the matching row is visible before setting FirstDisplayedScrollingRowIndex
+                        if (matchingRow.Visible)
+                        {
+                            matchingRow.Selected = true;
+                            dataGridView1.FirstDisplayedScrollingRowIndex = matchingRow.Index;
+                        }
+                        else
+                        {
+                            // Handle the case where the matching row is invisible
+                            // You may want to handle this case differently based on your requirements
+                        }
+                    }
                 }
             }
         }
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            // Clear the selection in dataGridView2 when a row is selected in dataGridView1
-            dataGridView2.ClearSelection();
+            // Check if there is a selected row in dataGridView1
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                // Get the roomNumber from the selected row in dataGridView1
+                string clickedRoomNumber = dataGridView1.SelectedRows[0].Cells["roomNumber"].Value?.ToString();
+
+                if (!string.IsNullOrEmpty(clickedRoomNumber))
+                {
+                    // Clear the selection in dataGridView2
+                    dataGridView2.ClearSelection();
+
+                    // Find the corresponding row in dataGridView2
+                    DataGridViewRow matchingRow = dataGridView2.Rows
+                        .Cast<DataGridViewRow>()
+                        .FirstOrDefault(row => row.Cells["roomNumber"].Value?.ToString() == clickedRoomNumber);
+
+                    // Highlight the entire row in dataGridView2 if found
+                    if (matchingRow != null)
+                    {
+                        matchingRow.Selected = true;
+                        dataGridView2.FirstDisplayedScrollingRowIndex = matchingRow.Index;
+                    }
+                }
+            }
         }
 
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            // Get the search term from the TextBox
+            string searchTerm = textBoxSearch.Text.ToLower();
+
+            // Loop through each row in dataGridView1
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                // Check if the row is the new row and in edit mode
+                if (!row.IsNewRow)
+                {
+                    // Get the customerName from the current row
+                    object customerNameCellValue = row.Cells["customerName"].Value;
+
+                    // Check if the customerName cell value is not null
+                    if (customerNameCellValue != null)
+                    {
+                        // Convert the cell value to string and make it lowercase
+                        string customerName = customerNameCellValue.ToString().ToLower();
+
+                        // Check if the customerName contains the search term
+                        bool match = customerName.Contains(searchTerm);
+
+                        // Show or hide the row based on the search result
+                        row.Visible = match;
+                    }
+                    else
+                    {
+                        // If the cell value is null, hide the row
+                        row.Visible = false;
+                    }
+                }
+            }
+        }
         private void dataGridView2_SelectionChanged(object sender, EventArgs e)
         {
             // Clear the selection in dataGridView1 when a row is selected in dataGridView2
             dataGridView1.ClearSelection();
         }
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
+            // Check if there is a selected row in dataGridView2
+            if (dataGridView2.SelectedRows.Count > 0)
+            {
+                // Get the roomKey from the selected row in dataGridView2
+                string roomKey = dataGridView2.SelectedRows[0].Cells["Key"].Value?.ToString();
 
+                if (!string.IsNullOrEmpty(roomKey))
+                {
+                    // Update the occupancy details using the unique key (roomKey)
+                    string updateOccupancyUrl = $"{Config.BasePath}/Rooms/{roomKey}/occupancyDetails.json?auth={Config.AuthSecret}";
+                    var occupancyPatchData = new
+                    {
+                        startDate = "",
+                        endDate = "",
+                        isOccupied = false,
+                        transId = ""
+                    };
+
+                    using (HttpClient client = new HttpClient())
+                    {
+                        HttpResponseMessage occupancyResponse = await client.PatchAsJsonAsync(updateOccupancyUrl, occupancyPatchData);
+
+                        if (occupancyResponse.IsSuccessStatusCode)
+                        {
+                            MessageBox.Show($"Room {roomKey} Checked out");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Error updating room occupancy: {occupancyResponse.StatusCode} - {occupancyResponse.ReasonPhrase}");
+                        }
+                    }
+                }
+            }
+        }
+
+        private Room GetRoomByNumber(string roomNumber)
+        {
+            FirebaseResponse roomsResponse = Client.Get("Rooms");
+
+            if (roomsResponse.Body != "null")
+            {
+                Dictionary<string, Room> rooms = JsonConvert.DeserializeObject<Dictionary<string, Room>>(roomsResponse.Body.ToString());
+
+                foreach (var room in rooms)
+                {
+                    if (room.Value.roomNumber.ToString() == roomNumber)
+                    {
+                        return room.Value;
+                    }
+                }
+            }
+            return null;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // Clear existing rows in both DataGridViews
+            dataGridView1.Rows.Clear();
+            dataGridView2.Rows.Clear();
+
+            // Load and display data into the DataGridViews
+            LoadData();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // Check if there is a selected row in dataGridView1
+            if (dataGridView1.SelectedRows.Count > 0)
+            {
+                // Get the transaction ID from the selected row in dataGridView1
+                string transactionId = dataGridView1.SelectedRows[0].Cells["transId"].Value?.ToString();
+
+                if (!string.IsNullOrEmpty(transactionId))
+                {
+                    // Delete the transaction using the transaction ID
+                    string deleteTransactionUrl = $"{Config.BasePath}/Transactions/{transactionId}.json?auth={Config.AuthSecret}";
+
+                    using (HttpClient client = new HttpClient())
+                    {
+                        HttpResponseMessage deleteResponse = client.DeleteAsync(deleteTransactionUrl).Result;
+
+                        if (deleteResponse.IsSuccessStatusCode)
+                        {
+                            MessageBox.Show($"Transaction with ID {transactionId} deleted successfully.");
+                            loadData();
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Error deleting transaction: {deleteResponse.StatusCode} - {deleteResponse.ReasonPhrase}");
+                        }
+                    }
+                }
+            }
         }
     }
 }

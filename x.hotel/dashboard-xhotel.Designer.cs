@@ -47,12 +47,13 @@ namespace x.hotel
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button2.Location = new System.Drawing.Point(954, 12);
+            this.button2.Location = new System.Drawing.Point(820, 138);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(113, 31);
             this.button2.TabIndex = 1;
@@ -211,7 +212,7 @@ namespace x.hotel
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 49.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label12.Location = new System.Drawing.Point(712, 229);
+            this.label12.Location = new System.Drawing.Point(721, 229);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(87, 95);
             this.label12.TabIndex = 15;
@@ -244,13 +245,23 @@ namespace x.hotel
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button1.Location = new System.Drawing.Point(835, 12);
+            this.button1.Location = new System.Drawing.Point(678, 138);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(113, 31);
             this.button1.TabIndex = 18;
             this.button1.Text = "Lists of Guests";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(534, 138);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(125, 27);
+            this.button3.TabIndex = 19;
+            this.button3.Text = "Generate Report";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // dashboard_xhotel
             // 
@@ -259,6 +270,7 @@ namespace x.hotel
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1165, 591);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
@@ -279,6 +291,7 @@ namespace x.hotel
             this.DoubleBuffered = true;
             this.Name = "dashboard_xhotel";
             this.Text = "dashboard_xhotel";
+            this.Load += new System.EventHandler(this.dashboard_xhotel_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -302,5 +315,6 @@ namespace x.hotel
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button3;
     }
 }

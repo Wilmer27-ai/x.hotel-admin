@@ -33,9 +33,9 @@ namespace x.hotel
 
         public class Room
         {
-        internal object roomKey;
-
+        public string Key { get; set; } // Add this line to include the room key
         public int bedCount { get; set; }
+
             public occupancyDetails occupancyDetails { get; set; }
             public int roomCapacity { get; set; }
             public string roomClassification { get; set; }
@@ -46,7 +46,8 @@ namespace x.hotel
             public RoomImages roomImages { get; set; }
             public string roomName { get; set; }
             public int roomNumber { get; set; }
-        }
+        public bool IsOccupied { get; internal set; }
+    }
 
         public class Transaction
         {
@@ -62,9 +63,7 @@ namespace x.hotel
 
         public class RoomDetails
         {
-        internal object roomClassification;
-
-        public string endDate { get; set; }
+            public string endDate { get; set; }
             public int roomNumber { get; set; }
             public string startDate { get; set; }
         }

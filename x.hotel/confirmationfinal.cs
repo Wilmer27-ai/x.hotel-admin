@@ -65,6 +65,8 @@ namespace x.hotel
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+            dashboard_xhotel newForm = new dashboard_xhotel();
+            newForm.Show();
         }
     }
 }
