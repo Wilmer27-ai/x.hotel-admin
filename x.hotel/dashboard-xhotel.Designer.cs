@@ -64,7 +64,7 @@ namespace x.hotel
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(745, 26);
+            this.button2.Location = new System.Drawing.Point(753, 26);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(125, 31);
             this.button2.TabIndex = 1;
