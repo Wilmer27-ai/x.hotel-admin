@@ -60,6 +60,8 @@ namespace x.hotel
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(444, 21);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(113, 31);
@@ -74,6 +76,7 @@ namespace x.hotel
             this.button4.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.button4.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(565, 106);
             this.button4.Name = "button4";
@@ -256,6 +259,8 @@ namespace x.hotel
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(325, 21);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(113, 31);
@@ -267,6 +272,8 @@ namespace x.hotel
             // button3
             // 
             this.button3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Location = new System.Drawing.Point(194, 21);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(125, 31);
@@ -312,12 +319,15 @@ namespace x.hotel
             // button5
             // 
             this.button5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Location = new System.Drawing.Point(563, 21);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(113, 31);
             this.button5.TabIndex = 22;
             this.button5.Text = "Logout";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // groupBox2
             // 
