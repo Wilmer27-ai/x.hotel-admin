@@ -16,5 +16,11 @@ namespace x.hotel
         {
             InitializeComponent();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            LoginForm newForm = new LoginForm();
+            newForm.Show();
+        }
     }
 }

@@ -97,7 +97,7 @@ namespace x.hotel
 
         private void button4_Click(object sender, EventArgs e)
         {
-            LoadData();
+     
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -184,6 +184,11 @@ namespace x.hotel
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

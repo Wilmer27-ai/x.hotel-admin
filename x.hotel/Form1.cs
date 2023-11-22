@@ -72,6 +72,7 @@ namespace x.hotel
                         dashboard_xhotel newForm = new dashboard_xhotel();
                         // Show the new form
                         newForm.Show();
+                        this.Close();
 
                     }
                     else

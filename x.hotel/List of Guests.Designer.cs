@@ -57,7 +57,7 @@ namespace x.hotel
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(516, 104);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(153, 16);
+            this.label2.Size = new System.Drawing.Size(162, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Search Customer Name:";
             // 
@@ -84,6 +84,8 @@ namespace x.hotel
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(616, 493);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(119, 39);
@@ -95,6 +97,8 @@ namespace x.hotel
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(741, 493);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(133, 39);
@@ -118,6 +122,8 @@ namespace x.hotel
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Location = new System.Drawing.Point(513, 494);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(97, 39);

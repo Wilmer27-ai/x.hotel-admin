@@ -325,7 +325,6 @@ namespace x.hotel
                         if (deleteResponse.IsSuccessStatusCode)
                         {
                             MessageBox.Show($"Transaction with ID {transactionId} deleted successfully.");
-                            loadData();
                         }
                         else
                         {

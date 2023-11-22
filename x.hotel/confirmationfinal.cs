@@ -19,7 +19,6 @@ namespace x.hotel
             InitializeComponent();
 
             // Display transaction details using labels
-            // Assuming you have labels named TransLabel, NameLabel, ContactLabel, and TotalAmountLabel on your form
             TransLabel.Text = transactionId;
             NameLabel.Text = customerName;
             ContactLabel.Text = customerPhoneNumber;
@@ -28,8 +27,11 @@ namespace x.hotel
             // Set the class-level calculatedAmount
             this.calculatedAmount = calculatedAmount;
 
-            // Subscribe to the TextChanged event of textBox1
-            textBox1.TextChanged += textBox3_TextChanged;
+            // Set the transactionId to textbox1
+            textBox1.Text = transactionId;
+
+            // Subscribe to the TextChanged event of textBox3
+            textBox3.TextChanged += textBox3_TextChanged;
         }
 
         private void confirmationfinal_Load(object sender, EventArgs e)

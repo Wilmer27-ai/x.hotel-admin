@@ -44,16 +44,16 @@ namespace x.hotel
             this.TotalAmountLabel = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -63,7 +63,7 @@ namespace x.hotel
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(167, 99);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 16);
+            this.label1.Size = new System.Drawing.Size(119, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Transaction ID:";
             // 
@@ -74,13 +74,15 @@ namespace x.hotel
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(227, 129);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 16);
+            this.label2.Size = new System.Drawing.Size(54, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Name:";
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(295, 284);
             this.button1.Name = "button1";
@@ -97,7 +99,7 @@ namespace x.hotel
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(208, 218);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 16);
+            this.label3.Size = new System.Drawing.Size(75, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "Payment:";
             // 
@@ -108,7 +110,7 @@ namespace x.hotel
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(192, 159);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 16);
+            this.label4.Size = new System.Drawing.Size(93, 17);
             this.label4.TabIndex = 8;
             this.label4.Text = "Contact No:";
             // 
@@ -119,7 +121,7 @@ namespace x.hotel
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(177, 189);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(102, 16);
+            this.label5.Size = new System.Drawing.Size(109, 17);
             this.label5.TabIndex = 9;
             this.label5.Text = "Total Amount:";
             // 
@@ -130,7 +132,7 @@ namespace x.hotel
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(213, 248);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 16);
+            this.label6.Size = new System.Drawing.Size(68, 17);
             this.label6.TabIndex = 10;
             this.label6.Text = "Change:";
             // 
@@ -147,7 +149,7 @@ namespace x.hotel
             this.TransLabel.BackColor = System.Drawing.Color.Transparent;
             this.TransLabel.Location = new System.Drawing.Point(291, 99);
             this.TransLabel.Name = "TransLabel";
-            this.TransLabel.Size = new System.Drawing.Size(17, 16);
+            this.TransLabel.Size = new System.Drawing.Size(18, 17);
             this.TransLabel.TabIndex = 12;
             this.TransLabel.Text = "\"\"";
             // 
@@ -157,7 +159,7 @@ namespace x.hotel
             this.NameLabel.BackColor = System.Drawing.Color.Transparent;
             this.NameLabel.Location = new System.Drawing.Point(291, 129);
             this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(17, 16);
+            this.NameLabel.Size = new System.Drawing.Size(18, 17);
             this.NameLabel.TabIndex = 13;
             this.NameLabel.Text = "\"\"";
             // 
@@ -167,7 +169,7 @@ namespace x.hotel
             this.ContactLabel.BackColor = System.Drawing.Color.Transparent;
             this.ContactLabel.Location = new System.Drawing.Point(291, 159);
             this.ContactLabel.Name = "ContactLabel";
-            this.ContactLabel.Size = new System.Drawing.Size(17, 16);
+            this.ContactLabel.Size = new System.Drawing.Size(18, 17);
             this.ContactLabel.TabIndex = 14;
             this.ContactLabel.Text = "\"\"";
             // 
@@ -177,13 +179,15 @@ namespace x.hotel
             this.TotalAmountLabel.BackColor = System.Drawing.Color.Transparent;
             this.TotalAmountLabel.Location = new System.Drawing.Point(291, 189);
             this.TotalAmountLabel.Name = "TotalAmountLabel";
-            this.TotalAmountLabel.Size = new System.Drawing.Size(17, 16);
+            this.TotalAmountLabel.Size = new System.Drawing.Size(18, 17);
             this.TotalAmountLabel.TabIndex = 15;
             this.TotalAmountLabel.Text = "\"\"";
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(390, 284);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(86, 37);
@@ -205,6 +209,17 @@ namespace x.hotel
             this.groupBox1.Size = new System.Drawing.Size(694, 71);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(631, 13);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(47, 45);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 24;
+            this.pictureBox3.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -246,17 +261,6 @@ namespace x.hotel
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(631, 13);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(47, 45);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 24;
-            this.pictureBox3.TabStop = false;
-            // 
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(283, 216);
@@ -292,9 +296,9 @@ namespace x.hotel
             this.Load += new System.EventHandler(this.confirmationfinal_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

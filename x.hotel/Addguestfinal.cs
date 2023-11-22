@@ -105,10 +105,9 @@ namespace x.hotel
             textBox1.Text = transactionId;
         }
 
+        // Modify your SaveTransaction method like this
         private async void SaveTransaction(string customerName, string customerPhoneNumber, int guestCount, string roomKey, DateTime startDate, DateTime endDate, int totalAmount, string Key)
         {
-            string transactionId = GenerateTransactionId();
-
             try
             {
                 // Calculate the number of days between start date and end date
@@ -117,7 +116,10 @@ namespace x.hotel
                 // Calculate the total amount based on the daily rate and number of days
                 int calculatedAmount = numberOfDays * (int)RoomsdataGrid.SelectedRows[0].Cells["roomDailyRate"].Value;
 
-                // Save the transaction
+                // Get the transactionId from textbox1
+                string transactionId = textBox1.Text;
+
+                // Save the transaction using the obtained transactionId
                 FirebaseResponse response = Client.Set($"Transactions/{transactionId}", new
                 {
                     customerName = customerName,
@@ -165,7 +167,8 @@ namespace x.hotel
             }
         }
 
-       private void button4_Click(object sender, EventArgs e)
+
+        private void button4_Click(object sender, EventArgs e)
 {
     // Get the selected row from the DataGridView
     if (RoomsdataGrid.SelectedRows.Count > 0)
@@ -190,8 +193,8 @@ namespace x.hotel
         int calculatedAmount = numberOfDays * (int)RoomsdataGrid.SelectedRows[0].Cells["roomDailyRate"].Value;
 
                 // Show the confirmation form with transaction details
-              confirmationfinal confirmationForm = new confirmationfinal(customerName, customerPhoneNumber, calculatedAmount, GenerateTransactionId());
-              DialogResult result = confirmationForm.ShowDialog();
+                confirmationfinal confirmationForm = new confirmationfinal(customerName, customerPhoneNumber, calculatedAmount, textBox1.Text);
+                DialogResult result = confirmationForm.ShowDialog();
 
                 // Check if the user confirmed the booking in the confirmation form
                 if (result == DialogResult.OK)
@@ -229,6 +232,14 @@ namespace x.hotel
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            textBox2.Text = string.Empty;
+            textBox5.Text = string.Empty;
+            GenerateTransactionId();
+            GenerateAndDisplayTransactionId();
         }
     }
 }
