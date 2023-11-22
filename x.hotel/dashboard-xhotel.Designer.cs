@@ -52,6 +52,7 @@ namespace x.hotel
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button5 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -59,12 +60,13 @@ namespace x.hotel
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button2.BackColor = System.Drawing.Color.LightSkyBlue;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(444, 21);
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(745, 26);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 31);
+            this.button2.Size = new System.Drawing.Size(125, 31);
             this.button2.TabIndex = 1;
             this.button2.Text = "Manage Rooms";
             this.button2.UseVisualStyleBackColor = false;
@@ -72,13 +74,14 @@ namespace x.hotel
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button4.BackColor = System.Drawing.Color.LightSkyBlue;
             this.button4.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.button4.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(565, 106);
+            this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button4.Location = new System.Drawing.Point(759, 141);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(113, 31);
             this.button4.TabIndex = 3;
@@ -140,7 +143,7 @@ namespace x.hotel
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(351, 5);
+            this.label5.Location = new System.Drawing.Point(393, 5);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(183, 20);
             this.label5.TabIndex = 8;
@@ -152,7 +155,7 @@ namespace x.hotel
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(345, 96);
+            this.label6.Location = new System.Drawing.Point(391, 96);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(67, 20);
             this.label6.TabIndex = 9;
@@ -164,7 +167,7 @@ namespace x.hotel
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(439, 96);
+            this.label7.Location = new System.Drawing.Point(485, 96);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(85, 20);
             this.label7.TabIndex = 10;
@@ -176,7 +179,7 @@ namespace x.hotel
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(540, 96);
+            this.label8.Location = new System.Drawing.Point(586, 96);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(88, 20);
             this.label8.TabIndex = 11;
@@ -226,7 +229,7 @@ namespace x.hotel
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 34.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(350, 29);
+            this.label12.Location = new System.Drawing.Point(396, 29);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(62, 67);
             this.label12.TabIndex = 15;
@@ -238,7 +241,7 @@ namespace x.hotel
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 34.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(453, 29);
+            this.label13.Location = new System.Drawing.Point(499, 29);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(62, 67);
             this.label13.TabIndex = 16;
@@ -250,7 +253,7 @@ namespace x.hotel
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 34.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(556, 29);
+            this.label14.Location = new System.Drawing.Point(602, 29);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(62, 67);
             this.label14.TabIndex = 17;
@@ -258,12 +261,13 @@ namespace x.hotel
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button1.BackColor = System.Drawing.Color.LightSkyBlue;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(325, 21);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(620, 26);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 31);
+            this.button1.Size = new System.Drawing.Size(125, 31);
             this.button1.TabIndex = 18;
             this.button1.Text = "Lists of Guests";
             this.button1.UseVisualStyleBackColor = false;
@@ -271,10 +275,11 @@ namespace x.hotel
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button3.BackColor = System.Drawing.Color.LightSkyBlue;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(194, 21);
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(495, 26);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(125, 31);
             this.button3.TabIndex = 19;
@@ -299,9 +304,9 @@ namespace x.hotel
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Location = new System.Drawing.Point(21, 143);
+            this.groupBox1.Location = new System.Drawing.Point(154, 178);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(657, 123);
+            this.groupBox1.Size = new System.Drawing.Size(718, 123);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             // 
@@ -318,12 +323,13 @@ namespace x.hotel
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button5.BackColor = System.Drawing.Color.LightSkyBlue;
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(563, 21);
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(870, 26);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(113, 31);
+            this.button5.Size = new System.Drawing.Size(125, 31);
             this.button5.TabIndex = 22;
             this.button5.Text = "Logout";
             this.button5.UseVisualStyleBackColor = false;
@@ -332,6 +338,7 @@ namespace x.hotel
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.pictureBox1);
             this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Controls.Add(this.button2);
@@ -339,9 +346,20 @@ namespace x.hotel
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Location = new System.Drawing.Point(2, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(689, 80);
+            this.groupBox2.Size = new System.Drawing.Size(1001, 80);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label15.Location = new System.Drawing.Point(83, 18);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(252, 39);
+            this.label15.TabIndex = 24;
+            this.label15.Text = "THE X HOTEL";
             // 
             // dashboard_xhotel
             // 
@@ -349,7 +367,7 @@ namespace x.hotel
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(690, 380);
+            this.ClientSize = new System.Drawing.Size(1001, 603);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button4);
@@ -361,6 +379,7 @@ namespace x.hotel
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -388,5 +407,6 @@ namespace x.hotel
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label15;
     }
 }
