@@ -57,7 +57,7 @@ namespace x.hotel
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(516, 104);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(162, 17);
+            this.label2.Size = new System.Drawing.Size(153, 16);
             this.label2.TabIndex = 1;
             this.label2.Text = "Search Customer Name:";
             // 
@@ -176,7 +176,7 @@ namespace x.hotel
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(146, 494);
+            this.pictureBox3.Location = new System.Drawing.Point(112, 492);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(40, 40);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

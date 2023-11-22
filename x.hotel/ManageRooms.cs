@@ -180,5 +180,10 @@ namespace x.hotel
                 MessageBox.Show("Please select a room to delete.");
             }
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
