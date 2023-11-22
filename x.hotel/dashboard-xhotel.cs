@@ -150,5 +150,24 @@ namespace x.hotel
         {
 
         }
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            // Your custom logic goes here
+
+            // For example, you can check if the form is the main form
+            if (this == Application.OpenForms[0])
+            {
+                // If it is, cancel the closing event
+                e.Cancel = true;
+            }
+            else
+            {
+                // If it's not the main form, close it normally
+                // (You may want to handle any cleanup here if needed)
+                base.OnFormClosing(e);
+            }
+        }
     }
 }
