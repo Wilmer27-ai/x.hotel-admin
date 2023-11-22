@@ -38,7 +38,6 @@ namespace x.hotel
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -58,7 +57,7 @@ namespace x.hotel
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(516, 104);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(153, 16);
+            this.label2.Size = new System.Drawing.Size(162, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Search Customer Name:";
             // 
@@ -127,16 +126,6 @@ namespace x.hotel
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(158, 493);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(119, 39);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Delete Trans";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.LightSkyBlue;
@@ -187,12 +176,13 @@ namespace x.hotel
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(112, 493);
+            this.pictureBox3.Location = new System.Drawing.Point(146, 494);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(40, 40);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 54;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // List_of_Guests
             // 
@@ -203,7 +193,6 @@ namespace x.hotel
             this.ClientSize = new System.Drawing.Size(1001, 603);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.button2);
@@ -236,7 +225,6 @@ namespace x.hotel
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;

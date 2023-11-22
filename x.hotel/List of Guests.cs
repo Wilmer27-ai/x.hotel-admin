@@ -305,7 +305,7 @@ namespace x.hotel
             LoadData();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void pictureBox3_Click(object sender, EventArgs e)
         {
             // Check if there is a selected row in dataGridView1
             if (dataGridView1.SelectedRows.Count > 0)
