@@ -43,7 +43,8 @@ namespace x.hotel
 
         private void button3_Click(object sender, EventArgs e)
         {
-           
+            Reports newForm = new Reports();
+            newForm.Show();
         }
         private Timer timer;
         private void InitializeRealtimeUpdates()
