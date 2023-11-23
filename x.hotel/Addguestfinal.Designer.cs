@@ -253,14 +253,15 @@ namespace x.hotel
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(151, 500);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(91, 49);
+            this.button2.Size = new System.Drawing.Size(113, 49);
             this.button2.TabIndex = 53;
             this.button2.Text = "New Guest";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Addguestfinal

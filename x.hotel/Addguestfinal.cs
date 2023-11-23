@@ -238,6 +238,7 @@ namespace x.hotel
         {
             textBox2.Text = string.Empty;
             textBox5.Text = string.Empty;
+            LoadData();
             GenerateTransactionId();
             GenerateAndDisplayTransactionId();
         }

@@ -37,7 +37,7 @@ namespace x.hotel
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxchange = new System.Windows.Forms.TextBox();
             this.TransLabel = new System.Windows.Forms.Label();
             this.NameLabel = new System.Windows.Forms.Label();
             this.ContactLabel = new System.Windows.Forms.Label();
@@ -136,12 +136,12 @@ namespace x.hotel
             this.label6.TabIndex = 10;
             this.label6.Text = "Change:";
             // 
-            // textBox1
+            // textBoxchange
             // 
-            this.textBox1.Location = new System.Drawing.Point(283, 245);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 22);
-            this.textBox1.TabIndex = 11;
+            this.textBoxchange.Location = new System.Drawing.Point(283, 245);
+            this.textBoxchange.Name = "textBoxchange";
+            this.textBoxchange.Size = new System.Drawing.Size(200, 22);
+            this.textBoxchange.TabIndex = 11;
             // 
             // TransLabel
             // 
@@ -282,7 +282,7 @@ namespace x.hotel
             this.Controls.Add(this.ContactLabel);
             this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.TransLabel);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxchange);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -313,7 +313,7 @@ namespace x.hotel
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxchange;
         private System.Windows.Forms.Label TransLabel;
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Label ContactLabel;

@@ -27,8 +27,7 @@ namespace x.hotel
             // Set the class-level calculatedAmount
             this.calculatedAmount = calculatedAmount;
 
-            // Set the transactionId to textbox1
-            textBox1.Text = transactionId;
+            
 
             // Subscribe to the TextChanged event of textBox3
             textBox3.TextChanged += textBox3_TextChanged;
@@ -55,12 +54,12 @@ namespace x.hotel
                 int change = enteredPayment - calculatedAmount;
 
                 // Display the change in textBox2
-                textBox1.Text = change.ToString();
+                textBoxchange.Text = change.ToString();
             }
             else
             {
                 // Clear textBox2 if the entered text is not a valid number
-                textBox1.Clear();
+                textBoxchange.Clear();
             }
         }
 
