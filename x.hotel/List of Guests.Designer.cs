@@ -207,6 +207,7 @@ namespace x.hotel
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.label2);
             this.Name = "List_of_Guests";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "List_of_Guests";
             this.Load += new System.EventHandler(this.List_of_Guests_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

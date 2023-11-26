@@ -186,6 +186,7 @@ namespace x.hotel
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "SignUpForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SignUpForm";
             this.Load += new System.EventHandler(this.SignUpForm_Load);
             this.groupBox1.ResumeLayout(false);

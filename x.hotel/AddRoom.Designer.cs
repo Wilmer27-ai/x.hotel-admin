@@ -519,6 +519,7 @@ namespace x.hotel
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AddRoom";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddRoom";
             this.Load += new System.EventHandler(this.AddRoom_Load);
             this.groupBox2.ResumeLayout(false);

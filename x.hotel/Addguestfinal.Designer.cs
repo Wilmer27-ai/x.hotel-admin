@@ -282,6 +282,7 @@ namespace x.hotel
             this.Controls.Add(this.RoomsdataGrid);
             this.Controls.Add(this.groupBox2);
             this.Name = "Addguestfinal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Addguestfinal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.RoomsdataGrid)).EndInit();
             this.groupBox1.ResumeLayout(false);

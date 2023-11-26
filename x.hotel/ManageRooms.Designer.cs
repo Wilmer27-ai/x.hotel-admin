@@ -213,6 +213,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.managerooms1);
             this.Name = "ManageRooms";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ManageRooms";
             this.Load += new System.EventHandler(this.ManageRooms_Load);
             ((System.ComponentModel.ISupportInitialize)(this.managerooms1)).EndInit();

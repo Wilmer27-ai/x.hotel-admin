@@ -373,6 +373,7 @@ namespace x.hotel
             this.Controls.Add(this.button4);
             this.DoubleBuffered = true;
             this.Name = "dashboard_xhotel";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "dashboard_xhotel";
             this.Load += new System.EventHandler(this.dashboard_xhotel_Load);
             this.groupBox1.ResumeLayout(false);

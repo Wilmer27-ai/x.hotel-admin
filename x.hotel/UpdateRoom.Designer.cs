@@ -623,6 +623,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "UpdateRoom";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpdateRoom";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

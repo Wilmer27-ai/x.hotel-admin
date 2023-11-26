@@ -80,6 +80,7 @@
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.Name = "Onboarding";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Onboarding";
             this.ResumeLayout(false);
             this.PerformLayout();

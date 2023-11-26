@@ -228,6 +228,12 @@
     <Compile Include="SignUpForm.Designer.cs">
       <DependentUpon>SignUpForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="splashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="splashScreen.Designer.cs">
+      <DependentUpon>splashScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateRoom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SignUpForm.resx">
       <DependentUpon>SignUpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="splashScreen.resx">
+      <DependentUpon>splashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateRoom.resx">
       <DependentUpon>UpdateRoom.cs</DependentUpon>
