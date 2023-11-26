@@ -16,7 +16,7 @@ namespace x.hotel
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Onboarding());
+            Application.Run(new splashScreen());
         }
     }
 }

@@ -63,27 +63,42 @@ namespace x.hotel
             // Fetch data from "Transactions" node
             FirebaseResponse transactionsResponse = Client.Get("Transactions");
 
-            Dictionary<string, Transaction> transactions = JsonConvert.DeserializeObject<Dictionary<string, Transaction>>(transactionsResponse.Body);
-
-            foreach (var transaction in transactions)
+            if (transactionsResponse.Body != null)
             {
-                if (transaction.Value.roomDetails != null)
+                Console.WriteLine("Response body:");
+                Console.WriteLine(transactionsResponse.Body);
+
+                Dictionary<string, Transaction> transactions = JsonConvert.DeserializeObject<Dictionary<string, Transaction>>(transactionsResponse.Body);
+
+                // Process transactions if there are any
+                if (transactions != null)
                 {
-                    dataGridView1.Rows.Add(
-                        transaction.Key,
-                        transaction.Value.customerName,
-                        transaction.Value.roomDetails.roomNumber,
-                        transaction.Value.roomDetails.startDate,
-                        transaction.Value.roomDetails.endDate,
-                        transaction.Value.transAmount
-                    );
+                    foreach (var transaction in transactions)
+                    {
+                        if (transaction.Value.roomDetails != null)
+                        {
+                            dataGridView1.Rows.Add(
+                                transaction.Key,
+                                transaction.Value.customerName,
+                                transaction.Value.roomDetails.roomNumber,
+                                transaction.Value.roomDetails.startDate,
+                                transaction.Value.roomDetails.endDate,
+                                transaction.Value.transAmount
+                            );
+                        }
+                    }
                 }
+            }
+            else
+            {
+                // Handle the case where there are no transactions
+                Console.WriteLine("No transactions found.");
             }
 
             // Fetch data from "Rooms" node
             FirebaseResponse res = Client.Get("Rooms");
 
-            if (res != null && res.Body != "null")
+            if (res.Body != null)
             {
                 Console.WriteLine("Response body:");
                 Console.WriteLine(res.Body);
