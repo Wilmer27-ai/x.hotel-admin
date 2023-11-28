@@ -77,7 +77,7 @@ namespace x.hotel
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(268, 99);
+            this.pictureBox2.Location = new System.Drawing.Point(276, 99);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(165, 138);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -90,9 +90,9 @@ namespace x.hotel
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(204, 250);
+            this.label3.Location = new System.Drawing.Point(205, 250);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(305, 48);
+            this.label3.Size = new System.Drawing.Size(313, 51);
             this.label3.TabIndex = 10;
             this.label3.Text = "THE X HOTEL";
             // 
