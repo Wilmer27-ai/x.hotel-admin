@@ -29,12 +29,25 @@ namespace x.hotel
 
             // Fetch transaction data from the "Transactions" node
             FirebaseResponse response = Client.Get("Transactions");
-            Dictionary<string, Transaction> transactions = response.ResultAs<Dictionary<string, Transaction>>();
 
-            // Populate the DataGridView with transaction data
-            PopulateDataGridView(transactions);
-            textBox1.TextChanged += TxtSearchName_TextChanged;
+            // Check if the request was successful
+            if (response.StatusCode == System.Net.HttpStatusCode.OK && response.Body != "null")
+            {
+                Dictionary<string, Transaction> transactions = response.ResultAs<Dictionary<string, Transaction>>();
+
+                // Populate the DataGridView with transaction data
+                PopulateDataGridView(transactions);
+                textBox1.TextChanged += TxtSearchName_TextChanged;
+            }
+            else
+            {
+                // Handle the case when there is no transaction data
+                // You can display a message or take any other appropriate action
+                MessageBox.Show("No transaction data found in Firebase.");
+            }
         }
+
+
 
         private void PopulateDataGridView(Dictionary<string, Transaction> transactions)
         {
