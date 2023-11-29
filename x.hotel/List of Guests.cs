@@ -47,16 +47,19 @@ namespace x.hotel
             dataGridView2.Columns.Add("endDate", "End Date");
             dataGridView2.Columns.Add("roomDailyRate", "Room Rate");
 
+
             // Load and display data into the DataGridView when the form is loaded
             loadData();
-            
+
             // Load and display data into the DataGridView when the form is loaded
             LoadData();
             dataGridView2.CellClick += dataGridView2_CellClick;
             dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             dataGridView2.SelectionChanged += dataGridView2_SelectionChanged;
             textBoxSearch.TextChanged += textBoxSearch_TextChanged;
-            button1.Click += button1_Click;
+            button1.Click -= button1_Click; // Unsubscribe to prevent multiple subscriptions
+            button1.Click += button1_Click; // Subscribe to the button click event
+
         }
         private void LoadData()
         {
@@ -330,20 +333,26 @@ namespace x.hotel
 
                 if (!string.IsNullOrEmpty(transactionId))
                 {
-                    // Delete the transaction using the transaction ID
-                    string deleteTransactionUrl = $"{Config.BasePath}/Transactions/{transactionId}.json?auth={Config.AuthSecret}";
+                    // Ask for confirmation before deleting
+                    DialogResult result = MessageBox.Show($"Are you sure you want to delete transaction with ID {transactionId}?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    using (HttpClient client = new HttpClient())
+                    if (result == DialogResult.Yes)
                     {
-                        HttpResponseMessage deleteResponse = client.DeleteAsync(deleteTransactionUrl).Result;
+                        // User confirmed, proceed with deletion
+                        string deleteTransactionUrl = $"{Config.BasePath}/Transactions/{transactionId}.json?auth={Config.AuthSecret}";
 
-                        if (deleteResponse.IsSuccessStatusCode)
+                        using (HttpClient client = new HttpClient())
                         {
-                            MessageBox.Show($"Transaction with ID {transactionId} deleted successfully.");
-                        }
-                        else
-                        {
-                            Console.WriteLine($"Error deleting transaction: {deleteResponse.StatusCode} - {deleteResponse.ReasonPhrase}");
+                            HttpResponseMessage deleteResponse = client.DeleteAsync(deleteTransactionUrl).Result;
+
+                            if (deleteResponse.IsSuccessStatusCode)
+                            {
+                                MessageBox.Show($"Transaction with ID {transactionId} deleted successfully.");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Error deleting transaction: {deleteResponse.StatusCode} - {deleteResponse.ReasonPhrase}");
+                            }
                         }
                     }
                 }
