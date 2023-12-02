@@ -87,6 +87,7 @@ namespace x.hotel
                 Dictionary<string, Room> rooms = JsonConvert.DeserializeObject<Dictionary<string, Room>>(roomsResponse.Body);
 
                 // Get today's date
+                // Get today's date without the time component
                 DateTime today = DateTime.Today;
 
                 // Calculate the number of occupied, vacant, and rooms checking out today
@@ -99,16 +100,22 @@ namespace x.hotel
                 {
                     if (room.occupancyDetails != null && room.occupancyDetails.isOccupied)
                     {
-                        DateTime startDate = DateTime.Parse(room.occupancyDetails.startDate);
-                        DateTime endDate = DateTime.Parse(room.occupancyDetails.endDate);
+                        DateTime startDate = DateTime.Parse(room.occupancyDetails.startDate).Date;
+                        DateTime endDate = DateTime.Parse(room.occupancyDetails.endDate).Date;
 
                         // Check if today is within the entire date range of occupancy (including today)
-                        if (today.Date >= startDate.Date && today.Date <= endDate.Date)
+                        // Check if today is within the entire date range of occupancy (including today)
+                        // Check if today is within the entire date range of occupancy (including time)
+                        // Check if today is within the entire date range of occupancy (including time)
+                        // Check if today is within the entire date range of occupancy (including time)
+                        // Check if today is within the entire date range of occupancy (including time)
+                        if ((today.AddDays(1) >= startDate && today.AddDays(1) <= endDate) || (startDate == today.AddDays(1).Date && today <= endDate.AddDays(1)))
+
                         {
                             occupiedRoomCount++;
-
                             // Check if today is the endDate for the room
-                            if (endDate.Date == today.Date)
+                            // Check if today is the endDate for the room (behind one day)
+                            if (endDate.Date == today.AddDays(1).Date)
                             {
                                 checkoutsTodayCount++;
                             }
@@ -125,7 +132,6 @@ namespace x.hotel
                         vacantRoomCount++;
                     }
                 }
-
                 // Update the labels with the counts on the UI thread
                 Invoke((MethodInvoker)delegate
                 {
@@ -143,6 +149,7 @@ namespace x.hotel
                 Console.WriteLine($"Exception: {ex.Message}");
             }
         }
+
 
 
 
