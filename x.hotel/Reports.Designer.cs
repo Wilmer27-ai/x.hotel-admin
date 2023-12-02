@@ -62,6 +62,7 @@ namespace x.hotel
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(22, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(339, 46);

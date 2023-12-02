@@ -262,32 +262,39 @@ namespace x.hotel
 
                 if (!string.IsNullOrEmpty(roomKey))
                 {
-                    // Update the occupancy details using the unique key (roomKey)
-                    string updateOccupancyUrl = $"{Config.BasePath}/Rooms/{roomKey}/occupancyDetails.json?auth={Config.AuthSecret}";
-                    var occupancyPatchData = new
-                    {
-                        startDate = "",
-                        endDate = "",
-                        isOccupied = false,
-                        transId = ""
-                    };
+                    // Ask for confirmation before checking out
+                    DialogResult result = MessageBox.Show($"Are you sure you want to check out room {roomKey}?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    using (HttpClient client = new HttpClient())
+                    if (result == DialogResult.Yes)
                     {
-                        HttpResponseMessage occupancyResponse = await client.PatchAsJsonAsync(updateOccupancyUrl, occupancyPatchData);
+                        // Update the occupancy details using the unique key (roomKey)
+                        string updateOccupancyUrl = $"{Config.BasePath}/Rooms/{roomKey}/occupancyDetails.json?auth={Config.AuthSecret}";
+                        var occupancyPatchData = new
+                        {
+                            startDate = "",
+                            endDate = "",
+                            isOccupied = false,
+                            transId = ""
+                        };
 
-                        if (occupancyResponse.IsSuccessStatusCode)
+                        using (HttpClient client = new HttpClient())
                         {
-                            MessageBox.Show($"Room {roomKey} Checked out");
-                        }
-                        else
-                        {
-                            Console.WriteLine($"Error updating room occupancy: {occupancyResponse.StatusCode} - {occupancyResponse.ReasonPhrase}");
+                            HttpResponseMessage occupancyResponse = await client.PatchAsJsonAsync(updateOccupancyUrl, occupancyPatchData);
+
+                            if (occupancyResponse.IsSuccessStatusCode)
+                            {
+                                MessageBox.Show($"Room {roomKey} Checked out");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Error updating room occupancy: {occupancyResponse.StatusCode} - {occupancyResponse.ReasonPhrase}");
+                            }
                         }
                     }
                 }
             }
         }
+
 
         private Room GetRoomByNumber(string roomNumber)
         {
