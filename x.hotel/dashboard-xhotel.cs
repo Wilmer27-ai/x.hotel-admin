@@ -86,46 +86,56 @@ namespace x.hotel
                 FirebaseResponse roomsResponse = Client.Get("Rooms");
                 Dictionary<string, Room> rooms = JsonConvert.DeserializeObject<Dictionary<string, Room>>(roomsResponse.Body);
 
+                // Get today's date
+                DateTime today = DateTime.Today;
 
                 // Calculate the number of occupied, vacant, and rooms checking out today
                 int occupiedRoomCount = 0;
                 int vacantRoomCount = 0;
                 int checkoutsTodayCount = 0;
+                int occupiedTransactionCount = 0;
 
                 foreach (var room in rooms.Values)
                 {
-                    if (room.occupancyDetails != null)
+                    if (room.occupancyDetails != null && room.occupancyDetails.isOccupied)
                     {
-                        if (room.occupancyDetails.isOccupied)
+                        DateTime startDate = DateTime.Parse(room.occupancyDetails.startDate);
+                        DateTime endDate = DateTime.Parse(room.occupancyDetails.endDate);
+
+                        // Check if today is within the entire date range of occupancy (including today)
+                        if (today.Date >= startDate.Date && today.Date <= endDate.Date)
                         {
                             occupiedRoomCount++;
 
                             // Check if today is the endDate for the room
-                            if (DateTime.Parse(room.occupancyDetails.endDate).Date == DateTime.Today)
+                            if (endDate.Date == today.Date)
                             {
                                 checkoutsTodayCount++;
                             }
                         }
-                        else
+
+                        // Check if room occupancy is true
+                        if (room.occupancyDetails.isOccupied)
                         {
-                            vacantRoomCount++;
+                            occupiedTransactionCount++;
                         }
+                    }
+                    else
+                    {
+                        vacantRoomCount++;
                     }
                 }
 
-
-                // Update the labels with the counts on the UI thread
                 // Update the labels with the counts on the UI thread
                 Invoke((MethodInvoker)delegate
                 {
                     label14.Text = occupiedRoomCount.ToString();
                     label13.Text = vacantRoomCount.ToString();
                     label12.Text = (rooms?.Count ?? 0).ToString();
-                    label11.Text = checkoutsTodayCount.ToString(); // This line adds the label for checkouts today
-                    label9.Text = (transactions?.Count ?? 0).ToString();
+                    label11.Text = checkoutsTodayCount.ToString();
+                    label9.Text = occupiedTransactionCount.ToString();
                     label10.Text = occupiedRoomCount.ToString();
                 });
-
             }
             catch (Exception ex)
             {
@@ -133,6 +143,11 @@ namespace x.hotel
                 Console.WriteLine($"Exception: {ex.Message}");
             }
         }
+
+
+
+
+
 
 
 
